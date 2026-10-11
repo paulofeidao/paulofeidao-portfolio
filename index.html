@@ -1,0 +1,5065 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Portfólio de Paulo Feidão — Programador Full Stack e desenvolvedor IoT.">
+  <title>Paulo Feidão — Programador Full Stack</title>
+  <style>
+    :root {
+      --black: #101010;
+      --paper: #f7f7f4;
+      --yellow: #f4c51e;
+      --muted: #777;
+      --line: #dededb;
+      --blue: #168bff
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 75px
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer
+    }
+
+    .wrap {
+      width: min(90%, 1280px);
+      margin: auto
+    }
+
+    header {
+      height: 58px;
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6.8%;
+      font-size: 11px;
+      letter-spacing: .04em
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .16em
+    }
+
+    .brandmark {
+      font-size: 25px;
+      color: var(--yellow);
+      font-weight: 900;
+      letter-spacing: -.1em
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px
+    }
+
+    .nav a {
+      opacity: .9;
+      transition: .2s
+    }
+
+    .nav a:hover {
+      color: var(--yellow)
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 24px
+    }
+
+    .hero {
+      height: 400px;
+      min-height: 390px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background: #111;
+      background-size: cover;
+      background-position: center top
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .83), rgba(0, 0, 0, .24) 58%, rgba(0, 0, 0, .55)), linear-gradient(0deg, rgba(0, 0, 0, .4), transparent 45%)
+    }
+
+    .hero-word {
+      position: absolute;
+      left: 6.8%;
+      top: 48px;
+      font-size: clamp(90px, 19vw, 245px);
+      line-height: .9;
+      font-weight: 900;
+      letter-spacing: -.075em;
+      color: rgba(255, 255, 255, .72);
+      white-space: nowrap
+    }
+
+    .hero-person {
+      position: absolute;
+      height: 94%;
+      width: auto;
+      max-width: 46%;
+      object-fit: contain;
+      object-position: bottom;
+      left: 37%;
+      bottom: -3%;
+      filter: grayscale(1);
+      z-index: 1;
+      mix-blend-mode: normal
+    }
+
+    .hero-copy {
+      position: absolute;
+      z-index: 2;
+      left: 7%;
+      top: 38%;
+      max-width: 340px
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 700
+    }
+
+    .pin {
+      color: var(--yellow);
+      font-size: 13px;
+      margin-right: 6px
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: .96;
+      margin: 16px 0 8px;
+      font-weight: 900;
+      letter-spacing: -.04em
+    }
+
+    .role {
+      font-size: 11px;
+      line-height: 1.5;
+      font-weight: 700;
+      letter-spacing: .03em
+    }
+
+    .hero-desc {
+      font-size: 11px;
+      margin: 12px 0 18px
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px
+    }
+
+    .btn {
+      border-radius: 30px;
+      padding: 10px 18px;
+      font-size: 9px;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, .65);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .btn.primary {
+      background: var(--yellow);
+      color: #111;
+      border-color: var(--yellow)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .hero-card {
+      position: absolute;
+      right: 8%;
+      top: 37%;
+      width: 190px;
+      background: rgba(10, 10, 10, .88);
+      border: 1px solid #777;
+      border-radius: 8px;
+      padding: 8px;
+      z-index: 2;
+      box-shadow: 0 10px 25px #0007;
+      font-size: 9px
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 88px;
+      object-fit: cover;
+      border-radius: 3px;
+      margin-top: 7px
+    }
+
+    .hero-card strong {
+      color: var(--yellow)
+    }
+
+    .hero-sign {
+      position: absolute;
+      right: 9%;
+      bottom: 9%;
+      font-family: cursive;
+      font-style: italic;
+      font-size: 18px;
+      transform: rotate(-8deg);
+      z-index: 2
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background: var(--paper);
+      clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%)
+    }
+
+    section {
+      padding: 42px 0
+    }
+
+    .section-kicker {
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .section-kicker:before {
+      content: "";
+      width: 25px;
+      height: 3px;
+      background: var(--yellow);
+      display: inline-block
+    }
+
+    .display {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(29px, 3vw, 42px);
+      line-height: .91;
+      letter-spacing: -.045em;
+      margin: 0;
+      text-transform: uppercase
+    }
+
+    .yellow {
+      color: var(--yellow)
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: .9fr 2fr;
+      gap: 34px;
+      align-items: start;
+      padding-top: 18px
+    }
+
+    .intro p {
+      font-size: 12px;
+      line-height: 1.55;
+      color: #555;
+      max-width: 300px
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 10px
+    }
+
+    .skill-card {
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 14px 12px 12px;
+      background: #fafaf8;
+      min-height: 94px
+    }
+
+    .skill-card h3 {
+      font-size: 9px;
+      letter-spacing: .08em;
+      margin: 0 0 13px;
+      text-transform: uppercase
+    }
+
+    .techs {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .tech {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      min-width: 45px;
+      font-size: 9px;
+      color: #444
+    }
+
+    .techicon {
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ic, #168bff);
+      font-family: Arial, sans-serif
+    }
+
+    .techicon.html {
+      color: #e95b35
+    }
+
+    .techicon.css {
+      color: #287bc5
+    }
+
+    .techicon.js {
+      background: #f4d21f;
+      color: #111;
+      padding: 5px;
+      font-size: 17px
+    }
+
+    .techicon.node {
+      color: #5d9c48
+    }
+
+    .techicon.mysql {
+      color: #287e9c
+    }
+
+    .techicon.mongo {
+      color: #329a68
+    }
+
+    .techicon.arduino {
+      color: #168d91
+    }
+
+
+    .tech-logo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .language-toggle {
+      border: 1px solid rgba(255, 255, 255, .5);
+      background: rgba(15, 15, 15, .4);
+      color: #fff;
+      border-radius: 18px;
+      padding: 7px 11px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      margin-left: 18px;
+      min-width: 36px;
+      transition: .2s;
+    }
+
+    .language-toggle:hover {
+      background: var(--yellow);
+      color: #111;
+      border-color: var(--yellow);
+    }
+
+    @media(max-width:760px) {
+      .language-toggle {
+        margin-left: auto;
+        margin-right: 10px;
+      }
+
+      header {
+        gap: 8px;
+      }
+
+      .nav.open {
+        z-index: 8;
+      }
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: .9fr 1.4fr .75fr;
+      gap: 28px;
+      align-items: center;
+      padding-top: 12px;
+      padding-bottom: 45px
+    }
+
+    .about-photo {
+      position: relative;
+      max-width: 235px;
+      margin: auto
+    }
+
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(1)
+    }
+
+    .photo-label {
+      position: absolute;
+      bottom: -14px;
+      left: -25px;
+      background: #111;
+      color: white;
+      padding: 13px 16px;
+      border-radius: 6px;
+      font-size: 10px;
+      line-height: 1.6;
+      box-shadow: 0 8px 20px #0002
+    }
+
+    .about-copy {
+      border-left: 1px solid var(--line);
+      padding-left: 25px
+    }
+
+    .about-copy p {
+      font-size: 11px;
+      line-height: 1.55;
+      color: #555;
+      max-width: 460px
+    }
+
+    .signature {
+      font-family: cursive;
+      font-size: 25px;
+      font-style: italic;
+      transform: rotate(-6deg);
+      margin-top: 15px
+    }
+
+    .impact {
+      border-left: 1px solid var(--line);
+      padding-left: 20px
+    }
+
+    .impact h3 {
+      font-size: 9px;
+      letter-spacing: .1em
+    }
+
+    .impact ul {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0
+    }
+
+    .impact li {
+      font-size: 10px;
+      margin: 12px 0;
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .impact li:before {
+      content: "◉";
+      color: var(--yellow)
+    }
+
+    .quote {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      line-height: 1.4;
+      margin-top: 22px
+    }
+
+
+    /* STORY EXPERIENCE — isolated styles; the rest of the portfolio remains unchanged. */
+    .about.story-upgraded {
+      align-items: stretch;
+    }
+
+    .story-summary {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+    }
+
+    .story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #5c5c58;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .story-badge:before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--yellow);
+    }
+
+    .story-summary h3 {
+      font: 700 clamp(19px, 2vw, 25px)/1.08 Georgia, 'Times New Roman', serif;
+      letter-spacing: -.035em;
+      margin: 0 0 9px;
+      max-width: 480px;
+    }
+
+    .story-summary p {
+      margin: 8px 0;
+    }
+
+    .story-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 17px;
+    }
+
+    .story-highlights span {
+      border: 1px solid #dfdfd9;
+      border-radius: 30px;
+      padding: 6px 9px;
+      color: #42423e;
+      font-size: 9px;
+      background: #fff;
+    }
+
+    .story-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .story-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 0;
+      background: var(--black);
+      color: #fff;
+      border-radius: 30px;
+      padding: 12px 17px;
+      font-size: 10px;
+      font-weight: 800;
+      transition: transform .2s, background .2s;
+      box-shadow: 0 8px 18px #00000012;
+    }
+
+    .story-open span {
+      color: var(--yellow);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .story-open:hover {
+      transform: translateY(-2px);
+      background: #292929;
+    }
+
+    .story-note {
+      color: #777;
+      font-size: 10px;
+    }
+
+    .story-full-row {
+      grid-column: 1/-1;
+      min-width: 0;
+    }
+
+    .story-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      padding: clamp(12px, 3vw, 34px);
+      background: rgba(7, 7, 7, .82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .story-modal.is-open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: storyFadeIn .22s ease both;
+    }
+
+    @keyframes storyFadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .story-dialog {
+      width: min(1120px, 100%);
+      height: min(800px, 94vh);
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid #414141;
+      border-radius: 16px;
+      background: #f7f7f4;
+      color: #141414;
+      box-shadow: 0 30px 100px #0009;
+    }
+
+    .story-sidebar {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #111;
+      color: #fff;
+      padding: 27px 20px 20px;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .story-side-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .story-monogram {
+      color: var(--yellow);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -.1em;
+    }
+
+    .story-side-label {
+      font-size: 8px;
+      letter-spacing: .17em;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+
+    .story-progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 9px;
+      color: #aaa;
+      margin: 0 0 8px;
+    }
+
+    .story-progress {
+      height: 3px;
+      background: #393939;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .story-progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--yellow);
+      transition: width .25s;
+    }
+
+    .story-chapter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: auto;
+      padding-right: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: #555 transparent;
+    }
+
+    .story-chapter-link {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      gap: 9px;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: #b8b8b8;
+      padding: 10px 8px;
+      cursor: pointer;
+      transition: .18s;
+    }
+
+    .story-chapter-link b {
+      font: italic 14px Georgia, serif;
+      color: #6d6d6d;
+    }
+
+    .story-chapter-link span {
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .story-chapter-link:hover {
+      background: #1b1b1b;
+      color: #fff;
+    }
+
+    .story-chapter-link.active {
+      border-color: #4b4324;
+      background: #242116;
+      color: #fff;
+    }
+
+    .story-chapter-link.active b {
+      color: var(--yellow);
+    }
+
+    .story-side-bottom {
+      margin-top: auto;
+      padding-top: 18px;
+      color: #777;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    .story-side-bottom strong {
+      display: block;
+      color: #eee;
+      font-size: 10px;
+    }
+
+    .story-main {
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 23px;
+      border-bottom: 1px solid #e5e5df;
+      background: #f7f7f4;
+    }
+
+    .story-modal-kicker {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      color: #73736d;
+      text-transform: uppercase;
+    }
+
+    .story-close {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      border: 1px solid #d9d9d3;
+      border-radius: 50%;
+      background: #fff;
+      color: #111;
+      font-size: 23px;
+      line-height: 1;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .story-close:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .story-reader {
+      overflow: auto;
+      padding: clamp(20px, 4vw, 42px);
+      scrollbar-width: thin;
+      scrollbar-color: #c7c7bf transparent;
+    }
+
+    .story-hero-art {
+      position: relative;
+      width: 100%;
+      height: clamp(150px, 24vh, 235px);
+      overflow: hidden;
+      border-radius: 10px;
+      background: #151515;
+      margin-bottom: 25px;
+    }
+
+    .story-hero-art img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(.3);
+      opacity: .82;
+    }
+
+    .story-hero-art:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #080808a8, transparent 80%), linear-gradient(0deg, #0008, transparent 60%);
+      pointer-events: none;
+    }
+
+    .story-art-caption {
+      position: absolute;
+      z-index: 1;
+      left: 20px;
+      bottom: 16px;
+      color: #fff;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .story-art-caption strong {
+      display: block;
+      font: 700 clamp(22px, 3vw, 34px)/1 Georgia, serif;
+      letter-spacing: -.04em;
+      margin-top: 7px;
+    }
+
+    .story-chapter-number {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .story-chapter-number:before {
+      content: "";
+      width: 25px;
+      height: 2px;
+      background: var(--yellow);
+    }
+
+    .story-chapter-title {
+      font: 700 clamp(30px, 4vw, 51px)/.98 Georgia, 'Times New Roman', serif;
+      letter-spacing: -.055em;
+      max-width: 760px;
+      margin: 0 0 19px;
+    }
+
+    .story-chapter-title em {
+      color: #d5a900;
+      font-style: normal;
+    }
+
+    .story-chapter-body {
+      max-width: 760px;
+      font-size: 13px;
+      line-height: 1.85;
+      color: #494944;
+    }
+
+    .story-chapter-body p {
+      margin: 0 0 14px;
+    }
+
+    .story-chapter-body strong {
+      color: #171717;
+    }
+
+    .story-quote {
+      border-left: 3px solid var(--yellow);
+      margin: 23px 0;
+      padding: 5px 0 5px 17px;
+      font: italic 19px/1.45 Georgia, serif;
+      color: #262620;
+    }
+
+    .story-modal-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 23px;
+      border-top: 1px solid #e5e5df;
+      background: #f7f7f4;
+    }
+
+    .story-step {
+      color: #777;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .story-nav-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .story-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 94px;
+      border: 1px solid #d7d7d0;
+      border-radius: 30px;
+      padding: 10px 14px;
+      background: #fff;
+      color: #111;
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .18s;
+    }
+
+    .story-nav-btn.next {
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .story-nav-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .story-nav-btn:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    body.story-lock {
+      overflow: hidden;
+    }
+
+    @media(max-width:760px) {
+      .about.story-upgraded {
+        gap: 28px;
+      }
+
+      .story-dialog {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+        height: min(900px, 96vh);
+      }
+
+      .story-sidebar {
+        padding: 13px 15px 10px;
+      }
+
+      .story-side-top {
+        margin-bottom: 10px;
+      }
+
+      .story-progress-label {
+        margin-bottom: 6px;
+      }
+
+      .story-progress {
+        margin-bottom: 9px;
+      }
+
+      .story-chapter-list {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 5px;
+        padding-bottom: 3px;
+      }
+
+      .story-chapter-link {
+        min-width: 155px;
+        grid-template-columns: 24px minmax(0, 1fr);
+        padding: 8px;
+      }
+
+      .story-chapter-link span {
+        font-size: 9px;
+      }
+
+      .story-side-bottom {
+        display: none;
+      }
+
+      .story-reader {
+        padding: 18px;
+      }
+
+      .story-hero-art {
+        height: 150px;
+        margin-bottom: 20px;
+      }
+
+      .story-modal-head {
+        padding: 12px 15px;
+      }
+
+      .story-modal-foot {
+        padding: 11px 15px;
+      }
+
+      .story-chapter-body {
+        font-size: 12px;
+      }
+
+      .story-full-row {
+        margin-top: 4px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .story-modal.is-open {
+        animation: none;
+      }
+
+      .story-progress span,
+      .story-open,
+      .story-chapter-link {
+        transition: none;
+      }
+    }
+
+    .achievements {
+      background: #101010;
+      color: #fff;
+      padding: 34px 0 38px
+    }
+
+    .ach-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px
+    }
+
+    .achievements .display {
+      font-size: clamp(26px, 3vw, 39px)
+    }
+
+    .count {
+      border-left: 2px solid var(--yellow);
+      padding-left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .05em
+    }
+
+    .count b {
+      font-family: Georgia, serif;
+      color: var(--yellow);
+      font-size: 52px
+    }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 23px
+    }
+
+    .award {
+      border: 1px solid #555;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #171717
+    }
+
+    .award img {
+      width: 100%;
+      height: 75px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.85)
+    }
+
+    .award-text {
+      padding: 9px;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.35
+    }
+
+    .award small {
+      display: block;
+      color: #aaa;
+      font-size: 8px;
+      font-weight: 400;
+      margin-top: 5px
+    }
+
+    .projects {
+      padding-top: 28px;
+      padding-bottom: 25px
+    }
+
+    .project-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px
+    }
+
+    .filters {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 7px 12px;
+      background: transparent;
+      font-size: 8px;
+      font-weight: 800
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: #111;
+      color: white;
+      border-color: #111
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      min-height: 94px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px #0001
+    }
+
+    .project[hidden] {
+      display: none
+    }
+
+    .project-copy {
+      padding: 11px 9px;
+      min-width: 0
+    }
+
+    .project h3 {
+      font-size: 11px;
+      margin: 0 0 4px
+    }
+
+    .project p {
+      font-size: 9px;
+      color: #777;
+      margin: 0 0 9px
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px
+    }
+
+    .tags span {
+      border: 1px solid #e2e2df;
+      border-radius: 10px;
+      padding: 3px 5px;
+      font-size: 7px;
+      color: #555
+    }
+
+    .project img {
+      width: 100%;
+      height: 100%;
+      min-height: 94px;
+      object-fit: cover;
+      background: #111
+    }
+
+    .contact {
+      background: #101010;
+      color: white;
+      padding: 26px 0 15px
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr .8fr;
+      gap: 30px;
+      align-items: center
+    }
+
+    .contact .display {
+      font-size: clamp(27px, 3vw, 38px)
+    }
+
+    .contact p {
+      font-size: 10px;
+      color: #bbb;
+      line-height: 1.5
+    }
+
+    .socials {
+      border-left: 2px solid var(--yellow);
+      padding-left: 18px;
+      font-size: 9px;
+      letter-spacing: .1em
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 13px;
+      margin-top: 13px;
+      font-size: 16px
+    }
+
+    .social-icons a:hover {
+      color: var(--yellow)
+    }
+
+    .copyright {
+      border-top: 1px solid #333;
+      margin-top: 24px;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
+      color: #aaa
+    }
+
+    @media(min-width:1400px) {
+      .hero {
+        height: 540px
+      }
+
+      .hero-person {
+        height: 98%
+      }
+
+      .hero-copy {
+        top: 39%
+      }
+
+      .hero-card {
+        top: 38%
+      }
+    }
+
+    @media(max-width:760px) {
+      header {
+        padding: 0 5%;
+        height: 55px
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 5%;
+        background: #111;
+        padding: 18px;
+        border: 1px solid #444;
+        border-radius: 6px;
+        flex-direction: column;
+        gap: 18px
+      }
+
+      .nav.open {
+        display: flex
+      }
+
+      .menu {
+        display: block
+      }
+
+      .hero {
+        height: 610px;
+        min-height: 610px;
+        background-position: center top
+      }
+
+      .hero-word {
+        font-size: clamp(70px, 17vw, 130px);
+        top: 90px;
+        left: 3%;
+        letter-spacing: -.08em
+      }
+
+      .hero-person {
+        height: 64%;
+        max-width: 85%;
+        left: 20%;
+        bottom: 0
+      }
+
+      .hero-copy {
+        left: 6%;
+        top: 24%;
+        max-width: 270px
+      }
+
+      .hero h1 {
+        font-size: 39px
+      }
+
+      .hero-card {
+        right: 5%;
+        top: auto;
+        bottom: 58px;
+        width: 135px
+      }
+
+      .hero-card img {
+        height: 55px
+      }
+
+      .hero-sign {
+        display: none
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+        gap: 15px
+      }
+
+      .skill-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .skill-card {
+        padding: 12px 8px
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 30px
+      }
+
+      .about-photo {
+        max-width: 230px
+      }
+
+      .about-copy,
+      .impact {
+        border-left: 0;
+        padding-left: 0
+      }
+
+      .about-copy {
+        max-width: 540px;
+        margin: auto
+      }
+
+      .impact {
+        border-top: 1px solid var(--line);
+        padding-top: 12px
+      }
+
+      .award-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .award:last-child {
+        grid-column: span 2
+      }
+
+      .ach-head {
+        align-items: flex-start
+      }
+
+      .count b {
+        font-size: 38px
+      }
+
+      .project-head {
+        display: block
+      }
+
+      .filters {
+        justify-content: flex-start;
+        margin-top: 18px
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 100px
+      }
+
+      .project img {
+        grid-row: 1;
+        min-height: 100px
+      }
+
+      .project-copy {
+        grid-row: 2
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 10px
+      }
+
+      .socials {
+        border-left: 0;
+        border-top: 1px solid #444;
+        padding: 14px 0 0
+      }
+
+      .copyright {
+        gap: 12px;
+        flex-wrap: wrap
+      }
+    }
+
+    @media(max-width:420px) {
+      section {
+        padding: 32px 0
+      }
+
+      .hero {
+        height: 580px
+      }
+
+      .hero-copy {
+        top: 26%
+      }
+
+      .hero-card {
+        display: none
+      }
+
+      .hero-word {
+        font-size: 76px;
+        top: 100px
+      }
+
+      .skill-grid {
+        grid-template-columns: 1fr
+      }
+
+      .tech {
+        min-width: 48px
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr
+      }
+
+      .project {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto
+      }
+
+      .project img {
+        grid-row: auto;
+        min-height: 100%;
+        grid-column: 2
+      }
+
+      .project-copy {
+        grid-row: auto
+      }
+
+      .ach-head {
+        display: block
+      }
+
+      .count {
+        margin-top: 16px;
+        width: max-content
+      }
+
+      .display {
+        font-size: 31px
+      }
+
+      .copyright {
+        display: block
+      }
+
+      .copyright span {
+        display: block;
+        margin: 6px 0
+      }
+    }
+
+    /* FOTO — PARA ALÉM DO CÓDIGO */
+    .about-photo {
+      position: relative;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      min-height: 480px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #111;
+      isolation: isolate;
+    }
+
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: grayscale(1);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .about-photo:hover img {
+      transform: scale(1.035);
+      filter: grayscale(0);
+    }
+
+    .about-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom,
+          transparent 45%,
+          rgba(0, 0, 0, .15) 65%,
+          rgba(0, 0, 0, .65) 100%);
+    }
+
+    .photo-label {
+      z-index: 2;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      max-width: 260px;
+      background: rgba(17, 17, 17, .88);
+      backdrop-filter: blur(8px);
+      border-left: 3px solid var(--yellow);
+      border-radius: 4px;
+    }
+
+    @media (min-width: 761px) {
+      .about.story-upgraded {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) minmax(0, .75fr);
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .about-photo {
+        width: 100%;
+        max-width: 360px;
+        min-height: 420px;
+        margin: 0 auto;
+      }
+
+      .about-photo img {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-copy {
+        display: block !important;
+        position: absolute !important;
+        top: auto !important;
+        bottom: 35px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 90% !important;
+        max-width: 420px !important;
+        text-align: center !important;
+        z-index: 5 !important;
+      }
+
+      .hero-copy h1 {
+        text-align: center !important;
+      }
+
+      .hero-copy p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    }
+
+
+
+    /* ----- Variáveis locais do modal (não afetam o resto do site) ----- */
+    .visitor-gate-overlay {
+      --vg-black: #101010;
+      --vg-paper: #f7f7f4;
+      --vg-yellow: #f4c51e;
+      --vg-muted: #777;
+      --vg-line: rgba(255, 255, 255, 0.08);
+      --vg-line-dark: rgba(0, 0, 0, 0.08);
+      --vg-radius: 22px;
+      --vg-shadow: 0 40px 120px rgba(0, 0, 0, 0.55), 0 10px 40px rgba(0, 0, 0, 0.35);
+      --vg-transition: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ----- Overlay ----- */
+    .visitor-gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(8, 8, 8, 0.62);
+      -webkit-backdrop-filter: blur(18px) saturate(120%);
+      backdrop-filter: blur(18px) saturate(120%);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.55s var(--vg-transition), visibility 0.55s var(--vg-transition);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .visitor-gate-overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ----- Card ----- */
+    .visitor-gate-card {
+      position: relative;
+      width: min(460px, 100%);
+      max-height: calc(100vh - 48px);
+      max-height: calc(100dvh - 48px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: linear-gradient(165deg, #161616 0%, #0d0d0d 100%);
+      border: 1px solid var(--vg-line);
+      border-radius: var(--vg-radius);
+      padding: 38px 34px 30px;
+      color: #fff;
+      box-shadow: var(--vg-shadow);
+      transform: translateY(24px) scale(0.96);
+      opacity: 0;
+      transition: transform 0.7s var(--vg-transition), opacity 0.7s var(--vg-transition);
+      scrollbar-width: thin;
+      scrollbar-color: #333 transparent;
+    }
+
+    .visitor-gate-card::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .visitor-gate-card::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 3px;
+    }
+
+    .visitor-gate-overlay.is-visible .visitor-gate-card {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    /* Detalhe visual exclusivo: linha amarela superior com brilho */
+    .visitor-gate-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 34px;
+      right: 34px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--vg-yellow), transparent);
+      border-radius: 2px;
+      opacity: 0.9;
+    }
+
+    /* Brilho ambiente subtil no canto superior */
+    .visitor-gate-card::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(244, 197, 30, 0.12), transparent 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    /* ----- Cabeçalho ----- */
+    .visitor-gate-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 26px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: #9a9a94;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .visitor-gate-mark span:first-child {
+      color: var(--vg-yellow);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      line-height: 1;
+    }
+
+    .visitor-gate-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(24px, 4vw, 30px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .visitor-gate-title em {
+      color: var(--vg-yellow);
+      font-style: normal;
+    }
+
+    .visitor-gate-sub {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #a8a8a2;
+      margin: 0 0 28px;
+      max-width: 340px;
+    }
+
+    /* ----- Campos ----- */
+    .visitor-gate-field {
+      margin-bottom: 18px;
+    }
+
+    .visitor-gate-label {
+      display: block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8a8a84;
+      margin-bottom: 8px;
+    }
+
+    .visitor-gate-label .visitor-gate-optional {
+      color: #555;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: none;
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    .visitor-gate-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.25s var(--vg-transition), background 0.25s var(--vg-transition), box-shadow 0.25s var(--vg-transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .visitor-gate-input::placeholder {
+      color: #555;
+    }
+
+    .visitor-gate-input:focus {
+      border-color: var(--vg-yellow);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 0 3px rgba(244, 197, 30, 0.12);
+    }
+
+    .visitor-gate-input.has-error {
+      border-color: #e85b4a;
+      box-shadow: 0 0 0 3px rgba(232, 91, 74, 0.12);
+    }
+
+    /* ----- Selector de motivos ----- */
+    .visitor-gate-reasons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .visitor-gate-reason {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: transparent;
+      color: #b8b8b2;
+      border-radius: 30px;
+      padding: 8px 13px;
+      font-size: 11px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s var(--vg-transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .visitor-gate-reason:hover {
+      border-color: rgba(244, 197, 30, 0.4);
+      color: #fff;
+    }
+
+    .visitor-gate-reason.is-selected {
+      background: var(--vg-yellow);
+      border-color: var(--vg-yellow);
+      color: #111;
+      font-weight: 700;
+    }
+
+    /* ----- Erro ----- */
+    .visitor-gate-error {
+      font-size: 11px;
+      color: #e85b4a;
+      margin: 8px 0 0;
+      min-height: 0;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s var(--vg-transition), transform 0.25s var(--vg-transition);
+    }
+
+    .visitor-gate-error.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----- Botão principal ----- */
+    .visitor-gate-submit {
+      position: relative;
+      width: 100%;
+      margin-top: 26px;
+      border: 0;
+      border-radius: 30px;
+      padding: 16px 24px;
+      background: var(--vg-yellow);
+      color: #111;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.25s var(--vg-transition), background 0.25s var(--vg-transition), box-shadow 0.25s var(--vg-transition);
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .visitor-gate-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(244, 197, 30, 0.25);
+      background: #ffd43b;
+    }
+
+    .visitor-gate-submit:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .visitor-gate-submit:disabled {
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .visitor-gate-submit.is-loading {
+      background: #c9a418;
+      color: transparent;
+    }
+
+    .visitor-gate-submit.is-loading::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(17, 17, 17, 0.3);
+      border-top-color: #111;
+      border-radius: 50%;
+      animation: visitorGateSpin 0.7s linear infinite;
+    }
+
+    @keyframes visitorGateSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .visitor-gate-submit.is-success {
+      background: #2ecc71;
+      color: #fff;
+    }
+
+    .visitor-gate-submit.is-success .visitor-gate-submit-arrow {
+      transform: translateX(3px);
+    }
+
+    .visitor-gate-submit-arrow {
+      transition: transform 0.25s var(--vg-transition);
+      font-size: 15px;
+    }
+
+    /* ----- Rodapé ----- */
+    .visitor-gate-foot {
+      margin-top: 20px;
+      font-size: 10px;
+      color: #555;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ----- Acessibilidade: foco visível ----- */
+    .visitor-gate-overlay :focus-visible {
+      outline: 2px solid var(--vg-yellow);
+      outline-offset: 2px;
+    }
+
+    .visitor-gate-submit:focus-visible {
+      outline-offset: 4px;
+    }
+
+    /* ----- Responsividade ----- */
+    @media (max-width: 520px) {
+      .visitor-gate-overlay {
+        padding: 16px;
+        align-items: flex-end;
+      }
+
+      .visitor-gate-card {
+        width: 100%;
+        max-height: calc(100vh - 32px);
+        max-height: calc(100dvh - 32px);
+        padding: 30px 22px 24px;
+        border-radius: 20px 20px 16px 16px;
+      }
+
+      .visitor-gate-card::before {
+        left: 22px;
+        right: 22px;
+      }
+
+      .visitor-gate-sub {
+        font-size: 11px;
+      }
+
+      .visitor-gate-input {
+        padding: 13px 14px;
+        font-size: 16px;
+        /* evita zoom em iOS */
+      }
+
+      .visitor-gate-reason {
+        padding: 7px 11px;
+        font-size: 10px;
+      }
+    }
+
+    @media (max-height: 620px) {
+      .visitor-gate-card {
+        padding-top: 26px;
+        padding-bottom: 22px;
+      }
+
+      .visitor-gate-mark {
+        margin-bottom: 18px;
+      }
+
+      .visitor-gate-sub {
+        margin-bottom: 18px;
+      }
+
+      .visitor-gate-field {
+        margin-bottom: 14px;
+      }
+
+      .visitor-gate-submit {
+        margin-top: 18px;
+      }
+    }
+
+    /* ----- Preferência por movimento reduzido ----- */
+    @media (prefers-reduced-motion: reduce) {
+
+      .visitor-gate-overlay,
+      .visitor-gate-card,
+      .visitor-gate-input,
+      .visitor-gate-submit,
+      .visitor-gate-reason,
+      .visitor-gate-error,
+      .visitor-gate-submit-arrow {
+        transition: none !important;
+      }
+
+      .visitor-gate-overlay.is-visible .visitor-gate-card {
+        transform: none;
+      }
+
+      .visitor-gate-submit.is-loading::after {
+        animation-duration: 1.4s;
+      }
+    }
+
+    /* CONTACT HEADER */
+    .contact-header {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: end;
+      margin-bottom: 100px;
+    }
+
+    .contact-intro {
+      max-width: 430px;
+    }
+
+    .contact-intro p {
+      color: #b8b8b8;
+      font-size: 16px;
+      line-height: 1.85;
+      margin: 0 0 28px;
+    }
+
+    /* SOCIAL SECTION */
+    .socials-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 38px;
+      margin-bottom: 90px;
+    }
+
+    .socials-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .socials-heading h3 {
+      margin: 10px 0 0;
+      color: #fff;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -1.5px;
+    }
+
+    .socials-heading>p {
+      max-width: 350px;
+      color: #999;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0 0 4px;
+    }
+
+    /* SOCIAL CARDS */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .social-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      min-width: 0;
+      min-height: 104px;
+      padding: 22px;
+      color: #fff;
+      text-decoration: none;
+      background: #111;
+      border: 1px solid #292929;
+      border-radius: 14px;
+      transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-4px);
+      background: #191919;
+      border-color: #f5d547;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-card:focus-visible {
+      outline: 2px solid #f5d547;
+      outline-offset: 4px;
+    }
+
+    .social-icon {
+      display: grid;
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      color: #f5d547;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 12px;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .social-icon svg {
+      display: block;
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .social-icon .icon-dot {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .social-letter {
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: -1px;
+    }
+
+    .social-card:hover .social-icon {
+      color: #111;
+      background: #f5d547;
+      border-color: #f5d547;
+    }
+
+    .social-info {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .social-info strong {
+      font-size: 16px;
+      font-weight: 650;
+      letter-spacing: -0.2px;
+    }
+
+    .social-info small {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .social-arrow {
+      align-self: flex-start;
+      color: #777;
+      font-size: 20px;
+      transition: color 220ms ease, transform 220ms ease;
+    }
+
+    .social-card:hover .social-arrow {
+      color: #f5d547;
+      transform: translate(3px, -3px);
+    }
+
+    /* FEATURED WEBSITE */
+    .social-card-featured {
+      grid-column: 1 / -1;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(245, 213, 71, 0.09), transparent 55%),
+        #111;
+    }
+
+    .social-card-featured .social-icon {
+      color: #111;
+      background: #f5d547;
+      border-color: #f5d547;
+    }
+
+    /* FOOTER */
+    .contact .copyright {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #777;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* TABLET & MOBILE */
+    @media (max-width: 760px) {
+      .contact-header {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 65px;
+      }
+
+      .contact-intro {
+        max-width: 540px;
+      }
+
+      .socials-section {
+        padding-top: 28px;
+        margin-bottom: 60px;
+      }
+
+      .socials-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .socials-heading>p {
+        max-width: 500px;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .social-card-featured {
+        grid-column: auto;
+      }
+
+      .contact .copyright {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .social-card {
+        gap: 13px;
+        min-height: 92px;
+        padding: 16px;
+      }
+
+      .social-icon {
+        flex-basis: 42px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .social-info strong {
+        font-size: 15px;
+      }
+
+      .social-info small {
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .social-card,
+      .social-icon,
+      .social-arrow {
+        transition: none;
+      }
+
+      .social-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="#inicio"><span class="brandmark">PF</span><span>PAULO FEIDÃO</span></a>
+    <nav class="nav" id="nav"><a href="#comentarios">Comentar</a><a href="#sobre">About</a><a
+        href="#skills">Skills</a><a href="#conquistas">Achievements</a><a href="#projetos">Projects</a><a
+        href="#contacto">Contact</a></nav>
+    <button class="language-toggle" id="languageToggle" type="button" aria-label="Mudar idioma"
+      aria-pressed="false">EN</button>
+    <button class="menu" id="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  </header>
+  <style>
+    /* ============================================
+     COMMENTS SECTION — isolada, prefixo .pf-comments-
+     ============================================ */
+    .pf-comments-section {
+      background: #101010;
+      color: #fff;
+      padding: 70px 0;
+    }
+
+    .pf-comments-inner {
+      width: min(90%, 900px);
+      margin: auto;
+    }
+
+    .pf-comments-kicker {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--yellow, #f4c51e);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pf-comments-kicker::before {
+      content: "";
+      width: 25px;
+      height: 3px;
+      background: var(--yellow, #f4c51e);
+    }
+
+    .pf-comments-title {
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+
+    .pf-comments-sub {
+      color: #a8a8a2;
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 0 40px;
+    }
+
+    /* ----- Formulário ----- */
+    .pf-comments-form {
+      background: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 26px;
+      margin-bottom: 40px;
+    }
+
+    .pf-comments-form-row {
+      margin-bottom: 16px;
+    }
+
+    .pf-comments-label {
+      display: block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8a8a84;
+      margin-bottom: 8px;
+    }
+
+    .pf-comments-input,
+    .pf-comments-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 13px 15px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      -webkit-appearance: none;
+    }
+
+    .pf-comments-textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.6;
+    }
+
+    .pf-comments-input:focus,
+    .pf-comments-textarea:focus {
+      border-color: var(--yellow, #f4c51e);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 0 3px rgba(244, 197, 30, 0.12);
+    }
+
+    .pf-comments-input.has-error,
+    .pf-comments-textarea.has-error {
+      border-color: #e85b4a;
+      box-shadow: 0 0 0 3px rgba(232, 91, 74, 0.12);
+    }
+
+    .pf-comments-char-count {
+      font-size: 10px;
+      color: #666;
+      text-align: right;
+      margin-top: 6px;
+    }
+
+    .pf-comments-char-count.is-warning {
+      color: #e85b4a;
+    }
+
+    .pf-comments-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow, #f4c51e);
+      color: #111;
+      border: 0;
+      border-radius: 30px;
+      padding: 13px 22px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+      font-family: inherit;
+    }
+
+    .pf-comments-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(244, 197, 30, 0.25);
+    }
+
+    .pf-comments-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .pf-comments-submit.is-loading {
+      background: #c9a418;
+      color: transparent;
+    }
+
+    .pf-comments-submit.is-loading::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(17, 17, 17, 0.3);
+      border-top-color: #111;
+      border-radius: 50%;
+      animation: pfCommentsSpin 0.7s linear infinite;
+      margin-left: 6px;
+    }
+
+    @keyframes pfCommentsSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .pf-comments-feedback {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 0.3s;
+      min-height: 0;
+    }
+
+    .pf-comments-feedback.is-visible {
+      opacity: 1;
+    }
+
+    .pf-comments-feedback.is-success {
+      color: #4ade80;
+    }
+
+    .pf-comments-feedback.is-error {
+      color: #e85b4a;
+    }
+
+    /* ----- Lista de comentários ----- */
+    .pf-comments-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .pf-comment-card {
+      background: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--yellow, #f4c51e);
+      border-radius: 8px;
+      padding: 20px 22px;
+      transition: transform 0.2s;
+    }
+
+    .pf-comment-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .pf-comment-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pf-comment-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .pf-comment-date {
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+
+    .pf-comment-message {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #cfcfc9;
+      margin: 0;
+    }
+
+    .pf-comments-empty {
+      color: #666;
+      font-size: 13px;
+      text-align: center;
+      padding: 30px 0;
+      font-style: italic;
+    }
+
+    .pf-comments-loading {
+      color: #666;
+      font-size: 12px;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 600px) {
+      .pf-comments-section {
+        padding: 50px 0;
+      }
+
+      .pf-comments-form {
+        padding: 18px;
+      }
+
+      .pf-comments-input,
+      .pf-comments-textarea {
+        font-size: 16px;
+      }
+
+      /* evita zoom iOS */
+      .pf-comment-card {
+        padding: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .pf-comment-card,
+      .pf-comments-submit {
+        transition: none;
+      }
+    }
+
+    /* ============================================================
+       REFINAMENTO VISUAL — comentários (CSS isolado; backend intacto)
+       ============================================================ */
+    .pf-comments-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(64px, 8vw, 108px) 0;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(244, 197, 30, .075), transparent 34%),
+        #101010;
+    }
+
+    .pf-comments-section::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #45443d, transparent);
+    }
+
+    .pf-comments-inner {
+      width: min(88%, 1120px);
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      column-gap: clamp(28px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .pf-comments-kicker,
+    .pf-comments-title,
+    .pf-comments-sub {
+      grid-column: 1 / -1;
+    }
+
+    .pf-comments-kicker {
+      margin-bottom: 16px;
+      color: var(--yellow, #f4c51e);
+    }
+
+    .pf-comments-title {
+      max-width: 760px;
+      font-size: clamp(38px, 5.3vw, 66px);
+      line-height: .98;
+      letter-spacing: -.06em;
+      text-transform: none;
+      margin-bottom: 18px;
+    }
+
+    .pf-comments-sub {
+      max-width: 590px;
+      margin-bottom: 38px;
+      font-size: 14px;
+      color: #a5a59d;
+    }
+
+    .pf-comments-form {
+      grid-column: 1;
+      margin: 0;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(34, 34, 32, .94), rgba(20, 20, 20, .98));
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .18);
+    }
+
+    .pf-comments-form::before {
+      content: "PARTILHA A TUA EXPERIÊNCIA";
+      display: block;
+      margin-bottom: 24px;
+      color: #d8d8d0;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .pf-comments-label {
+      color: #c1c1b8;
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+
+    .pf-comments-form-row {
+      margin-bottom: 20px;
+    }
+
+    .pf-comments-input,
+    .pf-comments-textarea {
+      border-radius: 9px;
+      border-color: rgba(255, 255, 255, .13);
+      background: #111;
+      padding: 15px 16px;
+    }
+
+    .pf-comments-textarea {
+      min-height: 150px;
+    }
+
+    .pf-comments-submit {
+      min-height: 48px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      letter-spacing: .045em;
+      justify-content: center;
+    }
+
+    .pf-comments-submit:hover:not(:disabled) {
+      box-shadow: 0 10px 28px rgba(244, 197, 30, .16);
+    }
+
+    .pf-comments-list {
+      grid-column: 2;
+      grid-row: 4 / span 2;
+      align-content: start;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .pf-comments-list::before {
+      content: "VOZES DA COMUNIDADE";
+      display: block;
+      color: #888880;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      margin: 3px 0 7px;
+    }
+
+    .pf-comment-card {
+      position: relative;
+      padding: 22px 24px;
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-left: 2px solid var(--yellow, #f4c51e);
+      border-radius: 12px;
+      background: linear-gradient(120deg, #1b1b1b, #151515);
+    }
+
+    .pf-comment-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(244, 197, 30, .28);
+    }
+
+    .pf-comment-name {
+      font-size: 14px;
+    }
+
+    .pf-comment-date {
+      color: #85857d;
+    }
+
+    .pf-comment-message {
+      color: #d0d0c9;
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .pf-comments-empty,
+    .pf-comments-loading {
+      border: 1px dashed rgba(255, 255, 255, .15);
+      border-radius: 12px;
+      padding: 28px 22px;
+      color: #999990;
+      text-align: left;
+      font-style: normal;
+      line-height: 1.7;
+    }
+
+    .pf-comments-feedback {
+      min-height: 0;
+    }
+
+    @media (max-width: 760px) {
+      .pf-comments-inner {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(90%, 560px);
+      }
+
+      .pf-comments-kicker,
+      .pf-comments-title,
+      .pf-comments-sub,
+      .pf-comments-form,
+      .pf-comments-list {
+        grid-column: 1;
+      }
+
+      .pf-comments-list {
+        grid-row: auto;
+        margin-top: 34px;
+      }
+
+      .pf-comments-title {
+        font-size: clamp(36px, 9vw, 52px);
+      }
+
+      .pf-comments-sub {
+        margin-bottom: 28px;
+      }
+    }
+
+    /* ============================================================
+       REFINAMENTO VISUAL — modal de visitantes (lógica preservada)
+       ============================================================ */
+    .visitor-gate-overlay {
+      padding: 22px;
+      background: rgba(5, 5, 5, .76);
+      -webkit-backdrop-filter: blur(10px) saturate(90%);
+      backdrop-filter: blur(10px) saturate(90%);
+    }
+
+    .visitor-gate-card {
+      width: min(480px, 100%);
+      max-height: min(780px, calc(100dvh - 44px));
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 14px;
+      background: #f7f7f4;
+      color: #111;
+      box-shadow: 0 32px 100px rgba(0, 0, 0, .48);
+      scrollbar-color: #c5c5bd transparent;
+    }
+
+    .visitor-gate-card::before {
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--vg-yellow);
+      opacity: 1;
+    }
+
+    .visitor-gate-card::after {
+      display: none;
+    }
+
+    .visitor-gate-mark {
+      color: #73736c;
+      margin-bottom: 28px;
+    }
+
+    .visitor-gate-mark span:first-child {
+      color: #111;
+      font-size: 24px;
+    }
+
+    .visitor-gate-title {
+      max-width: 390px;
+      color: #111;
+      font-size: clamp(29px, 4vw, 38px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      text-transform: none;
+      margin-bottom: 14px;
+    }
+
+    .visitor-gate-title em {
+      color: #a88400;
+    }
+
+    .visitor-gate-sub {
+      color: #66665f;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 27px;
+    }
+
+    .visitor-gate-label {
+      color: #4f4f49;
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+
+    .visitor-gate-label .visitor-gate-optional {
+      color: #8a8a82;
+    }
+
+    .visitor-gate-input {
+      background: #fff;
+      border: 1px solid #deded7;
+      border-radius: 8px;
+      color: #111;
+      padding: 15px 16px;
+    }
+
+    .visitor-gate-input::placeholder {
+      color: #a0a098;
+    }
+
+    .visitor-gate-input:focus {
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(197, 158, 0, .13);
+    }
+
+    .visitor-gate-reasons {
+      gap: 8px;
+    }
+
+    .visitor-gate-reason {
+      border-color: #deded7;
+      background: #fff;
+      color: #56564f;
+      border-radius: 6px;
+      padding: 9px 11px;
+      font-size: 11px;
+    }
+
+    .visitor-gate-reason:hover {
+      border-color: #b89a27;
+      color: #111;
+    }
+
+    .visitor-gate-reason.is-selected {
+      background: #171717;
+      border-color: #171717;
+      color: #f4c51e;
+    }
+
+    .visitor-gate-submit {
+      border-radius: 7px;
+      margin-top: 18px;
+      padding: 16px 20px;
+      background: #111;
+      color: #f4c51e;
+      letter-spacing: .045em;
+    }
+
+    .visitor-gate-submit:hover:not(:disabled) {
+      background: #282820;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .15);
+    }
+
+    .visitor-gate-submit.is-loading {
+      background: #3a3a32;
+      color: transparent;
+    }
+
+    .visitor-gate-submit.is-success {
+      background: #1f7a48;
+      color: #fff;
+    }
+
+    .visitor-gate-foot {
+      color: #888880;
+      font-size: 10px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 520px) {
+      .visitor-gate-overlay {
+        padding: 12px;
+        align-items: center;
+      }
+
+      .visitor-gate-card {
+        width: 100%;
+        max-height: calc(100dvh - 24px);
+        padding: 28px 22px 22px;
+        border-radius: 12px;
+      }
+
+      .visitor-gate-mark {
+        margin-bottom: 22px;
+      }
+
+      .visitor-gate-sub {
+        margin-bottom: 22px;
+      }
+
+      .visitor-gate-field {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .visitor-gate-overlay,
+      .visitor-gate-card,
+      .pf-comment-card,
+      .pf-comments-submit {
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <main>
+    <section class="hero" id="inicio" style="background-image:url('./img/header-img.png')">
+
+
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pin">●</span> ANGOLA</div>
+        <h1>PAULO FEIDÃO</h1>
+        <div class="role">FULL STACK DEVELOPER<br>IoT DEVELOPER · TECH ENTREPRENEUR</div>
+        <p class="hero-desc">Transforming ideas into real-world technology.</p>
+        <div class="actions"><a class="btn primary" href="#projetos">EXPLORE PROJECTS <span>→</span></a><a class="btn"
+            href="#sobre">MY STORY</a></div>
+      </div>
+
+      <div class="hero-sign">Paulo Feidão</div>
+      <div class="hero-bottom"></div>
+    </section>
+    <section class="wrap skills" id="skills">
+      <div class="intro">
+        <div class="section-kicker">MY SKILLS</div>
+        <h2 class="display">THE TOOLS BEHIND<br>THE IDEAS.</h2>
+        <p>Technologies I use to turn complex problems into working solutions.</p>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h3>▣ &nbsp; FRONTEND</h3>
+          <div class="techs">
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5">HTML
+            </div>
+            <div class="tech"><img class="tech-logo" src="./img/css3.jpg" alt="CSS3">CSS</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/javascript/F7DF1E"
+                alt="JavaScript">JavaScript</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/react/61DAFB" alt="React">React
+            </div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/handlebarsdotjs/F0772B"
+                alt="Handlebars">Handlebars</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◉ &nbsp; BACKEND</h3>
+          <div class="techs">
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/nodedotjs/5FA04E"
+                alt="Node.js">Node.js</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/express/111111"
+                alt="Express.js">Express.js</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>▣ &nbsp; DATABASES</h3>
+          <div class="techs">
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">MySQL
+            </div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/mongodb/47A248"
+                alt="MongoDB">MongoDB</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/postgresql/4169E1"
+                alt="PostgreSQL">PostgreSQL</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>▣ &nbsp; MOBILE</h3>
+          <div class="techs">
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/react/61DAFB"
+                alt="React Native">React Native</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/expo/111111" alt="Expo">Expo</div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>▣ &nbsp; EMBEDDED SYSTEMS & IoT</h3>
+          <div class="techs">
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/cplusplus/00599C" alt="C++">C++
+            </div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/arduino/00878F"
+                alt="Arduino">Arduino</div>
+            <div class="tech"><img class="tech-logo" src="https://cdn.simpleicons.org/espressif/E7352C"
+                alt="ESP32">ESP32</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap about story-upgraded" id="sobre">
+      <div class="about-photo">
+        <img src="./img/imagem-historia.jpg" alt="Paulo Feidão, retrato profissional">
+        <div class="photo-label"><strong>Paulo Feidão</strong><br>Programador Full Stack<br>Desenvolvedor IoT <span
+            class="pin">●</span></div>
+      </div>
+      <div class="about-copy">
+        <div class="section-kicker" data-story-copy="about-kicker">SOBRE MIM</div>
+        <h2 class="display" data-story-copy="about-title">PARA ALÉM<br><span class="yellow">DO CÓDIGO.</span></h2>
+        <p data-story-copy="about-p1">Sou Paulo Feidão, programador Full Stack e desenvolvedor IoT. Comecei pela
+          robótica e fui aprendendo cada tecnologia à medida que os meus projetos exigiam novas soluções — do C++ e
+          microcontroladores ao desenvolvimento web, bases de dados e aplicações móveis.</p>
+        <p data-story-copy="about-p2">Sou fundador e COO da Control Z, Diretor Técnico do Núcleo Científico e vencedor
+          de reconhecimentos em tecnologia e empreendedorismo, incluindo a categoria Melhor Apresentação do NASA Space
+          Apps Challenge. Gosto de transformar problemas reais em soluções digitais bem construídas.</p>
+        <div class="signature">Paulo Feidão</div>
+        <div class="story-summary">
+          <div class="story-badge" data-story-copy="recruiter-label">EM POUCAS PALAVRAS</div>
+          <h3 data-story-copy="recruiter-title">Aprendi a programar para fazer as coisas funcionarem. Continuei para as
+            tornar melhores.</h3>
+          <p data-story-copy="recruiter-text">A minha jornada combina desenvolvimento Full Stack, IoT, aplicações móveis
+            e UI/UX com execução de projetos, liderança técnica e mentalidade empreendedora.</p>
+          <div class="story-highlights"><span>Full Stack</span><span>IoT & ESP32</span><span>Aplicações
+              móveis</span><span>Empreendedorismo</span></div>
+          <div class="story-actions">
+            <button class="story-open" id="openFullStory" type="button"><span data-story-copy="read-story">Conhecer a
+                minha história</span><span aria-hidden="true">↗</span></button>
+            <span class="story-note" data-story-copy="story-note">17 capítulos · da robótica aos projetos reais</span>
+          </div>
+        </div>
+      </div>
+      <aside class="impact">
+        <h3 data-story-copy="impact-title">TECNOLOGIA<br>+<br>IMPACTO</h3>
+        <ul>
+          <li data-story-copy="impact-web">Desenvolvimento Web</li>
+          <li data-story-copy="impact-mobile">Aplicações Móveis</li>
+          <li data-story-copy="impact-iot">IoT e Sistemas Embebidos</li>
+          <li data-story-copy="impact-data">Bases de Dados e Sistemas</li>
+          <li data-story-copy="impact-business">Empreendedorismo</li>
+        </ul>
+        <div class="quote"><span class="yellow">“</span> <span data-story-copy="impact-quote">A melhor forma de
+            prever<br>o futuro é criá-lo.</span><br><small>— Paulo Feidão</small></div>
+      </aside>
+
+      <div class="story-modal" id="fullStoryModal" aria-hidden="true">
+        <div class="story-dialog" role="dialog" aria-modal="true" aria-labelledby="storyChapterTitle">
+          <aside class="story-sidebar">
+            <div class="story-side-top"><span class="story-monogram">PF</span><span class="story-side-label"
+                data-story-copy="timeline-label">A MINHA JORNADA</span></div>
+            <div class="story-progress-label"><span data-story-copy="reading-progress">PROGRESSO DA LEITURA</span><span
+                id="storyProgressText">1 / 17</span></div>
+            <div class="story-progress"><span id="storyProgressBar"></span></div>
+            <nav class="story-chapter-list" id="storyChapterList" aria-label="Capítulos da história"></nav>
+            <div class="story-side-bottom"><strong>Paulo Feidão</strong><span
+                data-story-copy="story-side-caption">Curiosidade. Execução. Evolução.</span></div>
+          </aside>
+          <div class="story-main">
+            <div class="story-modal-head"><span class="story-modal-kicker" data-story-copy="full-story-label">A HISTÓRIA
+                COMPLETA</span><button class="story-close" id="closeFullStory" type="button"
+                aria-label="Fechar história">×</button></div>
+            <article class="story-reader" id="storyReader" tabindex="0">
+              <div class="story-hero-art"><img id="storyChapterImage" alt="Imagem ilustrativa do capítulo">
+                <div class="story-art-caption"><span data-story-copy="chapter-art-label">CAPÍTULO</span><strong
+                    id="storyArtTitle">O início</strong></div>
+              </div>
+              <div class="story-chapter-number" id="storyChapterEyebrow">CAPÍTULO 01</div>
+              <h2 class="story-chapter-title" id="storyChapterTitle">O início</h2>
+              <div class="story-chapter-body" id="storyChapterBody"></div>
+            </article>
+            <div class="story-modal-foot"><span class="story-step" id="storyStepLabel">Capítulo 1 de 16</span>
+              <div class="story-nav-actions"><button class="story-nav-btn" id="storyPrev" type="button">← <span
+                    data-story-copy="previous-label">Anterior</span></button><button class="story-nav-btn next"
+                  id="storyNext" type="button"><span data-story-copy="next-label">Seguinte</span> →</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SWIPER: adicionar no <head> se ainda não estiver no site -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <style>
+      /* CONQUISTAS — CARROSSEL */
+      .achievements .achievement-carousel {
+        position: relative;
+        margin-top: 38px;
+      }
+
+      .achievement-carousel .swiper {
+        overflow: hidden;
+        padding-bottom: 42px;
+      }
+
+      .achievement-carousel .swiper-wrapper {
+        align-items: stretch;
+      }
+
+      .achievement-carousel .award {
+        height: auto;
+        min-width: 0;
+        overflow: hidden;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, .12);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .achievement-carousel .award-media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background: #1c1c1c;
+      }
+
+      .achievement-carousel .award-media img,
+      .achievement-carousel .award-media video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .achievement-carousel .award-media video {
+        background: #000;
+      }
+
+      .achievement-carousel .award-text {
+        padding: 20px;
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 600;
+      }
+
+      .achievement-carousel .award-text small {
+        display: block;
+        margin-top: 8px;
+        color: #b5b5b5;
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .achievement-carousel .swiper-pagination {
+        bottom: 0;
+      }
+
+      .achievement-carousel .swiper-pagination-bullet {
+        background: #fff;
+        opacity: .35;
+      }
+
+      .achievement-carousel .swiper-pagination-bullet-active {
+        background: #f5d547;
+        opacity: 1;
+      }
+
+      .achievement-carousel .achievement-navigation {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .achievement-carousel .achievement-nav {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, .3);
+        background: transparent;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background .2s, color .2s;
+      }
+
+      .achievement-carousel .achievement-nav:hover {
+        background: #f5d547;
+        color: #111;
+        border-color: #f5d547;
+      }
+
+      @media (max-width: 600px) {
+        .achievement-carousel .award-text {
+          padding: 15px;
+          font-size: 14px;
+        }
+
+        .achievement-carousel .achievement-nav {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    </style>
+
+    <section class="achievements" id="conquistas">
+      <div class="wrap">
+
+        <div class="ach-head">
+          <div>
+            <div class="section-kicker">CONQUISTAS</div>
+            <h2 class="display">
+              CONSTRUÍDO COM CURIOSIDADE.<br>
+              RECONHECIDO PELA EXECUÇÃO.
+            </h2>
+          </div>
+
+          <div class="count">
+            <b>6</b>
+            <span>TÍTULOS E<br>RECONHECIMENTOS</span>
+          </div>
+        </div>
+
+        <div class="achievement-carousel">
+
+          <div class="achievement-navigation">
+            <button class="achievement-nav achievement-prev" type="button" aria-label="Conquista anterior">←</button>
+            <button class="achievement-nav achievement-next" type="button" aria-label="Próxima conquista">→</button>
+          </div>
+
+          <div class="swiper achievement-swiper">
+            <div class="swiper-wrapper">
+
+              <!-- 1. NASA SPACE APPS CHALLENGE — FOTO -->
+              <article class="award swiper-slide" data-award="1">
+                <div class="award-media">
+                  <img src="images/nasa-space-apps.jpg" alt="Conquista NASA Space Apps Challenge" loading="lazy">
+                </div>
+                <div class="award-text">
+                  Vencedor do NASA Space Apps Challenge
+                  <small>Categoria: Melhor Apresentação</small>
+                </div>
+              </article>
+
+              <!-- 2. FEIRA DE TECNOLOGIA DO IMPTEL — FOTO -->
+              <article class="award swiper-slide" data-award="2">
+                <div class="award-media">
+                  <img src="images/feira-tecnologia-imptel.jpg" alt="Feira de Tecnologia do IMPTEL" loading="lazy">
+                </div>
+                <div class="award-text">
+                  Tricampeão da Feira de Tecnologia do IMPTEL
+                  <small>IMPTEL</small>
+                </div>
+              </article>
+
+              <!-- 3. ARDUINO DAY TECMICRO — VÍDEO -->
+              <article class="award swiper-slide" data-award="3">
+                <div class="award-media">
+                  <video controls playsinline preload="metadata" poster="images/arduino-day-tecmicro.jpg"
+                    aria-label="Vídeo da conquista Arduino Day TecMicro">
+                    <source src="videos/arduino-day-tecmicro.mp4" type="video/mp4">
+                    O teu navegador não suporta vídeo HTML5.
+                  </video>
+                </div>
+                <div class="award-text">
+                  Tricampeão do Arduino Day TecMicro
+                  <small>TecMicro</small>
+                </div>
+              </article>
+
+              <!-- 4. MEDALHA DE HONRA — VÍDEO -->
+              <article class="award swiper-slide" data-award="4">
+                <div class="award-media">
+                  <video controls playsinline preload="metadata" poster="images/medalha-de-honra.jpg"
+                    aria-label="Vídeo da Medalha de Honra">
+                    <source src="videos/medalha-de-honra.mp4" type="video/mp4">
+                    O teu navegador não suporta vídeo HTML5.
+                  </video>
+                </div>
+                <div class="award-text">
+                  Medalha de Honra
+                  <small>Diretor Técnico do Núcleo Científico da Escola</small>
+                </div>
+              </article>
+
+              <!-- 5. FEIRA DE EMPREENDEDORISMO DO IMPTEL — FOTO -->
+              <article class="award swiper-slide" data-award="5">
+                <div class="award-media">
+                  <img src="images/feira-empreendedorismo-imptel.jpg" alt="Feira de Empreendedorismo do IMPTEL"
+                    loading="lazy">
+                </div>
+                <div class="award-text">
+                  Tricampeão da Feira de Empreendedorismo do IMPTEL
+                  <small>Edições 2025/2026</small>
+                </div>
+              </article>
+
+            </div>
+
+            <div class="swiper-pagination achievement-pagination"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      (() => {
+        const carousel = document.querySelector('.achievement-swiper');
+
+        if (!carousel || typeof Swiper === 'undefined') return;
+
+        new Swiper(carousel, {
+          slidesPerView: 1,
+          spaceBetween: 18,
+          speed: 650,
+          grabCursor: true,
+          watchOverflow: true,
+
+          navigation: {
+            nextEl: '.achievement-next',
+            prevEl: '.achievement-prev'
+          },
+
+          pagination: {
+            el: '.achievement-pagination',
+            clickable: true
+          },
+
+          breakpoints: {
+            600: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            1000: {
+              slidesPerView: 3,
+              spaceBetween: 24
+            }
+          }
+        });
+
+        // Pausa os outros vídeos quando um começa a reproduzir.
+        const videos = carousel.querySelectorAll('video');
+
+        videos.forEach(video => {
+          video.addEventListener('play', () => {
+            videos.forEach(otherVideo => {
+              if (otherVideo !== video) otherVideo.pause();
+            });
+          });
+        });
+      })();
+    </script>
+
+
+    <style>
+      /* PORTFÓLIO DE REDESIGNS */
+      .redesign-showcase {
+        padding-top: 50px;
+        padding-bottom: 80px;
+      }
+
+      .redesign-intro {
+        max-width: 650px;
+        color: #999;
+        line-height: 1.8;
+        margin: 18px 0 35px;
+        font-size: 14px;
+      }
+
+      .redesign-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .redesign-card {
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, .12);
+        background: #111;
+        color: #fff;
+        text-align: left;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform .25s, border-color .25s;
+      }
+
+      .redesign-card:hover {
+        transform: translateY(-5px);
+        border-color: #f5d547;
+      }
+
+      .redesign-card-image {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #202020;
+      }
+
+      .redesign-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .45s;
+      }
+
+      .redesign-card:hover .redesign-card-image img {
+        transform: scale(1.035);
+      }
+
+      .redesign-card-tag {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+        padding: 7px 10px;
+        background: #f5d547;
+        color: #111;
+        font-size: 9px;
+        letter-spacing: 1px;
+        font-weight: 800;
+      }
+
+      .redesign-card-info {
+        padding: 22px;
+      }
+
+      .redesign-card-info small {
+        display: block;
+        color: #aaa;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        margin-bottom: 9px;
+      }
+
+      .redesign-card-info h3 {
+        font-size: clamp(20px, 3vw, 30px);
+        margin: 0 0 12px;
+      }
+
+      .redesign-card-info p {
+        color: #aaa;
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .redesign-card-link {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #f5d547;
+      }
+
+      /* JANELA DE DETALHES */
+      .redesign-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: none;
+        overflow-y: auto;
+        padding: 28px 16px;
+        background: rgba(0, 0, 0, .94);
+        backdrop-filter: blur(12px);
+      }
+
+      .redesign-modal.is-open {
+        display: block;
+      }
+
+      .redesign-modal-content {
+        width: min(1050px, 100%);
+        margin: 0 auto;
+        position: relative;
+        color: #fff;
+      }
+
+      .redesign-modal-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 0 25px;
+        border-bottom: 1px solid #333;
+      }
+
+      .redesign-modal-kicker {
+        color: #f5d547;
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .redesign-modal-title {
+        font-size: clamp(27px, 5vw, 48px);
+        margin: 0;
+      }
+
+      .redesign-close {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border: 1px solid #555;
+        background: transparent;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .redesign-close:hover {
+        background: #f5d547;
+        color: #111;
+      }
+
+      .redesign-modal-description {
+        max-width: 700px;
+        color: #aaa;
+        line-height: 1.8;
+        font-size: 13px;
+        margin: 24px 0 35px;
+      }
+
+      .redesign-gallery-section {
+        margin: 35px 0;
+      }
+
+      .redesign-gallery-heading {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .redesign-gallery-heading span {
+        color: #f5d547;
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .redesign-gallery-heading h3 {
+        margin: 0;
+        font-size: 19px;
+      }
+
+      .redesign-before-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .redesign-gallery-item {
+        position: relative;
+        padding: 0;
+        width: 100%;
+        border: 1px solid #333;
+        background: #151515;
+        overflow: hidden;
+        cursor: zoom-in;
+        text-align: left;
+      }
+
+      .redesign-gallery-item img {
+        display: block;
+        width: 100%;
+        max-height: 520px;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        transition: transform .3s;
+      }
+
+      .redesign-gallery-item:hover img {
+        transform: scale(1.025);
+      }
+
+      .redesign-image-label {
+        display: block;
+        padding: 12px 14px;
+        color: #ddd;
+        font-size: 11px;
+        letter-spacing: .5px;
+      }
+
+      .redesign-after-image img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .redesign-video {
+        width: 100%;
+        max-height: 650px;
+        display: block;
+        background: #000;
+        border: 1px solid #333;
+      }
+
+      .redesign-modal-footer {
+        padding: 22px 0;
+        border-top: 1px solid #333;
+        color: #777;
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      /* VISUALIZAÇÃO DA IMAGEM EM GRANDE */
+      .redesign-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100001;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        background: rgba(0, 0, 0, .97);
+      }
+
+      .redesign-lightbox.is-open {
+        display: flex;
+      }
+
+      .redesign-lightbox img {
+        max-width: 100%;
+        max-height: 88vh;
+        object-fit: contain;
+      }
+
+      .redesign-lightbox-close {
+        position: absolute;
+        right: 22px;
+        top: 18px;
+        width: 45px;
+        height: 45px;
+        border: 1px solid #666;
+        background: #111;
+        color: #fff;
+        font-size: 27px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 700px) {
+        .redesign-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .redesign-card-info {
+          padding: 18px;
+        }
+
+        .redesign-before-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .redesign-modal {
+          padding: 15px 12px;
+        }
+
+        .redesign-modal-top {
+          align-items: flex-start;
+        }
+      }
+
+      /* Imagem do ANTES: ocupar toda a área disponível */
+      .redesign-gallery-item {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .redesign-gallery-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+    </style>
+
+    <!-- TRABALHOS SELECIONADOS -->
+    <section class="wrap projects redesign-showcase" id="projetos">
+      <div class="project-head">
+        <div>
+          <div class="section-kicker">REDESIGN CASE STUDIES</div>
+          <h2 class="display">
+            TRABALHOS<br>SELECIONADOS.
+          </h2>
+        </div>
+        <div class="count">
+          <b>07</b>
+          <span>PROJECTOS<br>DE REDESIGN</span>
+        </div>
+      </div>
+
+      <p class="redesign-intro">
+        Melhorei o visual de sites de várias empresas, tornando-os mais modernos, bonitos e fáceis de usar. Aqui podes
+        ver como eram os sites antes e como poderiam ficar depois das minhas melhorias, com imagens e vídeos que mostram
+        cada detalhe do meu trabalho.
+      </p>
+
+      <div class="redesign-grid" id="redesignGrid"></div>
+    </section>
+
+    <!-- MODAL DE CADA EMPRESA -->
+    <div class="redesign-modal" id="redesignModal" role="dialog" aria-modal="true" aria-labelledby="redesignModalTitle">
+
+      <div class="redesign-modal-content">
+        <div class="redesign-modal-top">
+          <div>
+            <div class="redesign-modal-kicker" id="redesignModalKicker">
+              REDESIGN CASE STUDY
+            </div>
+            <h2 class="redesign-modal-title" id="redesignModalTitle">
+              Empresa
+            </h2>
+          </div>
+
+          <button class="redesign-close" id="redesignClose" type="button" aria-label="Fechar">×</button>
+        </div>
+
+        <p class="redesign-modal-description" id="redesignModalDescription"></p>
+
+        <section class="redesign-gallery-section">
+          <div class="redesign-gallery-heading">
+            <span>01</span>
+            <h3>Antes — experiência original</h3>
+          </div>
+          <div class="redesign-before-grid" id="redesignBeforeGrid"></div>
+        </section>
+
+        <section class="redesign-gallery-section">
+          <div class="redesign-gallery-heading">
+            <span>02</span>
+            <h3>Depois — proposta visual</h3>
+          </div>
+
+          <button class="redesign-gallery-item redesign-after-image" id="redesignAfterButton" type="button">
+            <img id="redesignAfterImage" src="" alt="">
+            <span class="redesign-image-label">
+              Ver imagem em tamanho grande ↗
+            </span>
+          </button>
+        </section>
+
+        <section class="redesign-gallery-section">
+          <div class="redesign-gallery-heading">
+            <span>03</span>
+            <h3>Demonstração em vídeo</h3>
+          </div>
+
+          <video class="redesign-video" id="redesignAfterVideo" controls playsinline preload="metadata">
+            O teu navegador não suporta vídeo HTML5.
+          </video>
+        </section>
+
+        <div class="redesign-modal-footer">
+          CONCEITO DE REDESIGN · PORTFÓLIO DE PAULO FEIDÃO
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGEM AMPLIADA -->
+    <div class="redesign-lightbox" id="redesignLightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+      <button class="redesign-lightbox-close" id="redesignLightboxClose" type="button"
+        aria-label="Fechar imagem">×</button>
+      <img id="redesignLightboxImage" src="" alt="">
+    </div>
+
+    <script>
+      (() => {
+        /*
+         * SUBSTITUI OS CAMINHOS DE EXEMPLO PELOS TEUS FICHEIROS.
+         * Organiza-os por empresa para manter o portfólio arrumado.
+         */
+
+        const redesignProjects = [
+          {
+            name: "Sonangol",
+            category: "ENERGIA",
+            description: "Conceito de redesign da presença digital da Sonangol. Compara a imagem original com a proposta visual e a respetiva demonstração em vídeo.",
+            cover: "projects/sonangol/depois.jpg",
+            before: "projects/sonangol/antes.jpg",
+            after: "projects/sonangol/depois.jpg",
+            video: "projects/sonangol/depois.mp4"
+          },
+          {
+            name: "DStv",
+            category: "ENTRETENIMENTO",
+            description: "Estudo visual de redesign para a DStv, apresentado através da comparação entre a experiência original e a proposta desenvolvida.",
+            cover: "projects/dstv/depois.jpg",
+            before: "projects/dstv/antes.jpg",
+            after: "projects/dstv/depois.jpg",
+            video: "projects/dstv/depois.mp4"
+          },
+          {
+            name: "ZAP",
+            category: "TELEVISÃO E STREAMING",
+            description: "Proposta de redesign para a ZAP, com foco na apresentação visual e na experiência de navegação.",
+            cover: "projects/zap/depois.jpg",
+            before: "projects/zap/antes.jpg",
+            after: "projects/zap/depois.jpg",
+            video: "projects/zap/depois.mp4"
+          },
+          {
+            name: "Seaside",
+            category: "RETALHO E MODA",
+            description: "Conceito de redesign para a Seaside, com foco na identidade visual e na experiência de navegação.",
+            cover: "projects/seaside/depois.jpg",
+            before: "projects/seaside/antes.jpg",
+            after: "projects/seaside/depois.jpg",
+            video: "projects/seaside/depois.mp4"
+          },
+          {
+            name: "TAAG",
+            category: "AVIAÇÃO",
+            description: "Proposta de redesign da presença digital da TAAG, documentada com imagens do antes e do depois e uma demonstração em vídeo.",
+            cover: "projects/taag/depois.jpg",
+            before: "projects/taag/antes.jpg",
+            after: "projects/taag/depois.jpg",
+            video: "projects/taag/depois.mp4"
+          },
+          {
+            name: "TPA",
+            category: "COMUNICAÇÃO SOCIAL",
+            description: "Conceito de redesign para a TPA, com apresentação da proposta visual e demonstração do resultado.",
+            cover: "projects/tpa/depois.jpg",
+            before: "projects/tpa/antes.jpg",
+            after: "projects/tpa/depois.jpg",
+            video: "projects/tpa/depois.mp4"
+          },
+          {
+            name: "Movicel",
+            category: "TELECOMUNICAÇÕES",
+            description: "Estudo de redesign para a Movicel, mostrando a experiência original e a nova proposta visual.",
+            cover: "projects/movicel/depois.jpg",
+            before: "projects/movicel/antes.jpg",
+            after: "projects/movicel/depois.jpg",
+            video: "projects/movicel/depois.mp4"
+          }
+        ];
+
+        const grid = document.getElementById("redesignGrid");
+        const modal = document.getElementById("redesignModal");
+        const lightbox = document.getElementById("redesignLightbox");
+
+        if (!grid || !modal || !lightbox) return;
+
+        // Cria os cartões de apresentação.
+        redesignProjects.forEach((project, index) => {
+          const card = document.createElement("button");
+          card.type = "button";
+          card.className = "redesign-card";
+          card.setAttribute("aria-label", "Ver projeto " + project.name);
+
+          card.innerHTML = `
+      <div class="redesign-card-image">
+        <img src="${project.cover}" alt="Redesign de ${project.name}"
+             loading="lazy">
+        <span class="redesign-card-tag">REDESIGN · 0${index + 1}</span>
+      </div>
+      <div class="redesign-card-info">
+        <small>${project.category}</small>
+        <h3>${project.name}</h3>
+        <p>Antes e depois, imagens do projeto e demonstração em vídeo.</p>
+        <span class="redesign-card-link">EXPLORAR PROJETO ↗</span>
+      </div>
+    `;
+
+          card.addEventListener("click", () => openProject(project));
+          grid.appendChild(card);
+        });
+
+        const title = document.getElementById("redesignModalTitle");
+        const kicker = document.getElementById("redesignModalKicker");
+        const description = document.getElementById("redesignModalDescription");
+        const beforeGrid = document.getElementById("redesignBeforeGrid");
+        const afterImage = document.getElementById("redesignAfterImage");
+        const afterButton = document.getElementById("redesignAfterButton");
+        const video = document.getElementById("redesignAfterVideo");
+
+
+
+        function openProject(project) {
+          title.textContent = project.name;
+          kicker.textContent = project.category + " / REDESIGN CASE STUDY";
+          description.textContent = project.description;
+
+          // APENAS UMA FOTO DO ANTES
+          beforeGrid.replaceChildren();
+
+          const beforeButton = document.createElement("button");
+          beforeButton.type = "button";
+          beforeButton.className = "redesign-gallery-item";
+
+          const beforeImg = document.createElement("img");
+          beforeImg.src = project.before;
+          beforeImg.alt = project.name + " — antes do redesign";
+
+          const beforeLabel = document.createElement("span");
+          beforeLabel.className = "redesign-image-label";
+          beforeLabel.textContent = "ANTES · Ampliar ↗";
+
+          beforeButton.append(beforeImg, beforeLabel);
+
+          beforeButton.addEventListener("click", () => {
+            openLightbox(project.before, beforeImg.alt);
+          });
+
+          beforeGrid.appendChild(beforeButton);
+
+          // FOTO DO DEPOIS
+          afterImage.src = project.after;
+          afterImage.alt = project.name + " — proposta de redesign";
+
+          // VÍDEO DO DEPOIS
+          video.pause();
+          video.removeAttribute("src");
+          video.src = project.video;
+          video.load();
+
+          // ABRIR MODAL
+          modal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+
+          document.getElementById("redesignClose").focus();
+        }
+
+        function closeProject() {
+          modal.classList.remove("is-open");
+          video.pause();
+          document.body.style.overflow = "";
+        }
+
+        function openLightbox(src, alt) {
+          const image = document.getElementById("redesignLightboxImage");
+          image.src = src;
+          image.alt = alt;
+          lightbox.classList.add("is-open");
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove("is-open");
+        }
+
+        afterButton.addEventListener("click", () => {
+          openLightbox(afterImage.src, afterImage.alt);
+        });
+
+        document.getElementById("redesignClose")
+          .addEventListener("click", closeProject);
+
+        document.getElementById("redesignLightboxClose")
+          .addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", event => {
+          if (event.target === lightbox) closeLightbox();
+        });
+
+        modal.addEventListener("click", event => {
+          if (event.target === modal) closeProject();
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape") {
+            if (lightbox.classList.contains("is-open")) {
+              closeLightbox();
+            } else if (modal.classList.contains("is-open")) {
+              closeProject();
+            }
+          }
+        });
+      })();
+    </script>
+
+
+    <section class="contact" id="contacto">
+      <div class="wrap">
+
+        <div class="contact-header">
+          <div>
+            <div class="section-kicker">CONTACTO E REDES SOCIAIS</div>
+            <h2 class="display">
+              VAMOS CRIAR ALGO<br>
+              <span class="yellow">COM SIGNIFICADO.</span>
+            </h2>
+          </div>
+
+          <div class="contact-intro">
+            <p>
+              Tens uma ideia, um projeto ou uma oportunidade?
+              Vamos conversar. Podes também acompanhar o meu trabalho
+              e conectar-te comigo através das redes sociais.
+            </p>
+
+            <a class="btn primary" href="mailto:paulofeidao8@gmail.com">
+              VAMOS CONVERSAR <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="socials-section">
+          <div class="socials-heading">
+            <div>
+              <div class="section-kicker">ENCONTRA-ME ONLINE</div>
+              <h3>Vamos conectar<span class="yellow">.</span></h3>
+            </div>
+
+            <p>
+              Acompanha o meu trabalho, explora os meus projetos
+              e mantém-te em contacto comigo.
+            </p>
+          </div>
+
+          <div class="social-grid">
+
+            <a class="social-card" href="https://github.com/paulofeidao" target="_blank" rel="noopener noreferrer"
+              aria-label="Visitar o meu perfil no GitHub">
+
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6S17.5 1.2 15 3.1a13.5 13.5 0 0 0-7 0C5.5 1.2 4.3 1.5 4.3 1.5a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 2.8 8.7c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22" />
+                </svg>
+              </span>
+
+              <span class="social-info">
+                <strong>GitHub</strong>
+                <small>Explora os meus projetos e códigos</small>
+              </span>
+
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="social-card" href="https://www.linkedin.com/in/paulo-feid%C3%A3o-9152b0443/" target="_blank"
+              rel="noopener noreferrer" aria-label="Visitar o meu perfil no LinkedIn">
+
+              <span class="social-icon social-letter" aria-hidden="true">in</span>
+
+              <span class="social-info">
+                <strong>LinkedIn</strong>
+                <small>Vamos criar conexões profissionais</small>
+              </span>
+
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="social-card" href="https://instagram.com/_controlz.ao" target="_blank" rel="noopener noreferrer"
+              aria-label="Visitar o meu perfil no Instagram">
+
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle class="icon-dot" cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </span>
+
+              <span class="social-info">
+                <strong>Instagram</strong>
+                <small>Descobre os meus conteúdos e o meu dia a dia</small>
+              </span>
+
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="social-card" href="https://www.tiktok.com/@controlz_ao" target="_blank" rel="noopener noreferrer"
+              aria-label="Visitar o meu perfil no TikTok">
+
+              <span class="social-icon social-letter" aria-hidden="true">♪</span>
+
+              <span class="social-info">
+                <strong>TikTok</strong>
+                <small>Descobre os meus vídeos e publicações</small>
+              </span>
+
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="social-card social-card-featured" href="https://controlz-ao.netlify.app/" target="_blank"
+              rel="noopener noreferrer" aria-label="Visitar o site da Control Z">
+
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0-18" />
+                </svg>
+              </span>
+
+              <span class="social-info">
+                <strong>Control Z</strong>
+                <small>Conhece a minha marca de tecnologia</small>
+              </span>
+
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="copyright">
+          <span>© 2026 Paulo Feidão. Todos os direitos reservados.</span>
+          <span>Angola · Programador Full Stack · Programador de IoT · Empreendedor Tecnológico</span>
+        </div>
+
+      </div>
+    </section>
+
+
+
+  </main>
+  <!-- ============================================
+     SECÇÃO DE COMENTÁRIOS
+     ============================================ -->
+  <section class="pf-comments-section" id="comentarios">
+    <div class="pf-comments-inner">
+
+      <div class="pf-comments-kicker">COMENTÁRIOS</div>
+      <h2 class="pf-comments-title">O que dizem<br>sobre o meu trabalho.</h2>
+      <p class="pf-comments-sub">
+        Deixa a tua opinião, sugestão ou mensagem. Todos os comentários são revistos antes de serem publicados.
+      </p>
+
+      <!-- Formulário -->
+      <form class="pf-comments-form" id="pfCommentsForm" novalidate>
+        <div class="pf-comments-form-row">
+          <label class="pf-comments-label" for="pfCommentName">Nome</label>
+          <input class="pf-comments-input" type="text" id="pfCommentName" name="name" placeholder="O teu nome"
+            maxlength="80" required>
+        </div>
+
+        <div class="pf-comments-form-row">
+          <label class="pf-comments-label" for="pfCommentMessage">Comentário</label>
+          <textarea class="pf-comments-textarea" id="pfCommentMessage" name="message"
+            placeholder="Escreve aqui a tua mensagem..." maxlength="1000" required></textarea>
+          <div class="pf-comments-char-count" id="pfCommentCount">0 / 1000</div>
+        </div>
+
+        <button class="pf-comments-submit" id="pfCommentsSubmit" type="submit">
+          <span class="pf-comments-submit-text">Enviar comentário</span>
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <div class="pf-comments-feedback" id="pfCommentsFeedback" role="status" aria-live="polite"></div>
+      </form>
+
+      <!-- Lista -->
+      <div class="pf-comments-list" id="pfCommentsList">
+        <div class="pf-comments-loading">A carregar comentários...</div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ============================================================
+     VISITOR GATE — MODAL PREMIUM DE IDENTIFICAÇÃO
+     ============================================================ -->
+  <div class="visitor-gate-overlay" id="visitorGate" aria-hidden="true">
+    <div class="visitor-gate-card" role="dialog" aria-modal="true" aria-labelledby="visitorGateTitle"
+      aria-describedby="visitorGateSub">
+
+      <div class="visitor-gate-mark">
+        <span>PF</span>
+        <span>PORTFÓLIO · PAULO FEIDÃO</span>
+      </div>
+
+      <h2 class="visitor-gate-title" id="visitorGateTitle">
+        Antes de começares,<br><em>vamos conhecer-nos?</em>
+      </h2>
+
+      <p class="visitor-gate-sub" id="visitorGateSub">
+        Gostaria de saber quem está a visitar o meu portfólio. Deixa o teu nome e continua a explorar.
+      </p>
+
+      <form id="visitorGateForm" novalidate>
+        <div class="visitor-gate-field">
+          <label class="visitor-gate-label" for="visitorGateName">Nome</label>
+          <input class="visitor-gate-input" type="text" id="visitorGateName" name="name" placeholder="O teu nome"
+            autocomplete="name" maxlength="80" required aria-required="true" aria-describedby="visitorGateNameError">
+          <p class="visitor-gate-error" id="visitorGateNameError" role="alert" aria-live="polite"></p>
+        </div>
+
+        <div class="visitor-gate-field">
+          <label class="visitor-gate-label">
+            Motivo da visita <span class="visitor-gate-optional">(opcional)</span>
+          </label>
+          <div class="visitor-gate-reasons" id="visitorGateReasons" role="group" aria-label="Motivo da visita">
+            <button type="button" class="visitor-gate-reason" data-reason="Conhecer o teu trabalho">Conhecer o teu
+              trabalho</button>
+            <button type="button" class="visitor-gate-reason" data-reason="Explorar os teus projetos">Explorar os teus
+              projetos</button>
+            <button type="button" class="visitor-gate-reason" data-reason="Oportunidade profissional">Oportunidade
+              profissional</button>
+            <button type="button" class="visitor-gate-reason" data-reason="Curiosidade">Curiosidade</button>
+            <button type="button" class="visitor-gate-reason" data-reason="Outro motivo">Outro motivo</button>
+          </div>
+          <input type="hidden" id="visitorGateReason" name="reason" value="">
+        </div>
+
+        <button class="visitor-gate-submit" id="visitorGateSubmit" type="submit">
+          <span class="visitor-gate-submit-text">Entrar no portfólio</span>
+          <span class="visitor-gate-submit-arrow" aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <p class="visitor-gate-foot">
+        Os teus dados são usados apenas para identificar a visita.<br>
+        Não partilhamos nada com terceiros.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('pfCommentsForm');
+      var nameInput = document.getElementById('pfCommentName');
+      var messageInput = document.getElementById('pfCommentMessage');
+      var countEl = document.getElementById('pfCommentCount');
+      var submitBtn = document.getElementById('pfCommentsSubmit');
+      var feedback = document.getElementById('pfCommentsFeedback');
+      var listEl = document.getElementById('pfCommentsList');
+
+      if (!form || !listEl) return;
+
+      var submitting = false;
+
+      /* ----- Contador de caracteres ----- */
+      function updateCount() {
+        var len = messageInput.value.length;
+        countEl.textContent = len + ' / 1000';
+        countEl.classList.toggle('is-warning', len > 900);
+      }
+      messageInput.addEventListener('input', updateCount);
+
+      /* ----- Erros visuais ----- */
+      function showFeedback(msg, type) {
+        feedback.textContent = msg;
+        feedback.classList.add('is-visible');
+        feedback.classList.remove('is-success', 'is-error');
+        feedback.classList.add(type === 'success' ? 'is-success' : 'is-error');
+      }
+
+      function clearFeedback() {
+        feedback.textContent = '';
+        feedback.classList.remove('is-visible', 'is-success', 'is-error');
+      }
+
+      function markError(input, hasError) {
+        input.classList.toggle('has-error', hasError);
+      }
+
+      /* ----- Carregar comentários aprovados ----- */
+      function loadComments() {
+        fetch('/.netlify/functions/list-comments')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            renderComments(data.comments || []);
+          })
+          .catch(function () {
+            listEl.innerHTML = '<div class="pf-comments-empty">Não foi possível carregar os comentários.</div>';
+          });
+      }
+
+      function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function formatDate(iso) {
+        var d = new Date(iso);
+        var months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+        return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      }
+
+      function renderComments(comments) {
+        if (!comments.length) {
+          listEl.innerHTML = '<div class="pf-comments-empty">Ainda não há comentários aprovados. Sê o primeiro!</div>';
+          return;
+        }
+
+        listEl.innerHTML = comments.map(function (c) {
+          return (
+            '<article class="pf-comment-card">' +
+            '<div class="pf-comment-head">' +
+            '<span class="pf-comment-name">' + escapeHtml(c.name) + '</span>' +
+            '<span class="pf-comment-date">' + formatDate(c.created_at) + '</span>' +
+            '</div>' +
+            '<p class="pf-comment-message">' + escapeHtml(c.message) + '</p>' +
+            '</article>'
+          );
+        }).join('');
+      }
+
+      /* ----- Submissão ----- */
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (submitting) return;
+
+        clearFeedback();
+        markError(nameInput, false);
+        markError(messageInput, false);
+
+        var name = nameInput.value.trim();
+        var message = messageInput.value.trim();
+
+        if (name.length < 2) {
+          markError(nameInput, true);
+          showFeedback('Por favor, escreve o teu nome.', 'error');
+          nameInput.focus();
+          return;
+        }
+
+        if (message.length < 5) {
+          markError(messageInput, true);
+          showFeedback('O comentário deve ter pelo menos 5 caracteres.', 'error');
+          messageInput.focus();
+          return;
+        }
+
+        submitting = true;
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
+        submitBtn.querySelector('.pf-comments-submit-text').textContent = 'A enviar...';
+
+        fetch('/.netlify/functions/submit-comment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, message: message })
+        })
+          .then(function (r) {
+            return r.json().then(function (data) {
+              return { ok: r.ok, data: data };
+            });
+          })
+          .then(function (result) {
+            if (!result.ok) {
+              throw { message: result.data.message || 'Erro ao enviar.' };
+            }
+            showFeedback(result.data.message || 'Comentário enviado! Será revisto antes de aparecer.', 'success');
+            form.reset();
+            updateCount();
+          })
+          .catch(function (err) {
+            showFeedback(err.message || 'Erro de rede. Tenta novamente.', 'error');
+          })
+          .finally(function () {
+            submitting = false;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('is-loading');
+            submitBtn.querySelector('.pf-comments-submit-text').textContent = 'Enviar comentário';
+          });
+      });
+
+      /* ----- Inicialização ----- */
+      updateCount();
+      loadComments();
+    })();
+  </script>
+  <script>
+    /* ============================================================
+       VISITOR GATE — Lógica isolada numa IIFE
+       Não colide com nenhuma variável ou função existente.
+       ============================================================ */
+    (function () {
+      'use strict';
+
+      /* ----- Configuração ----- */
+      var STORAGE_KEY = 'pf_visitor_registered_v1';
+      var ENDPOINT = '/.netlify/functions/register-visitor';
+      var TIMEOUT_MS = 12000;
+
+      /* ----- Elementos ----- */
+      var overlay = document.getElementById('visitorGate');
+      var card = overlay ? overlay.querySelector('.visitor-gate-card') : null;
+      var form = document.getElementById('visitorGateForm');
+      var nameInput = document.getElementById('visitorGateName');
+      var nameError = document.getElementById('visitorGateNameError');
+      var reasonsWrap = document.getElementById('visitorGateReasons');
+      var reasonInput = document.getElementById('visitorGateReason');
+      var submitBtn = document.getElementById('visitorGateSubmit');
+
+      if (!overlay || !form || !nameInput || !submitBtn) return;
+
+      /* ----- Estado ----- */
+      var submitting = false;
+      var lastFocused = null;
+
+      /* ----- Verificar se já está registado ----- */
+      function isRegistered() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return false;
+          var data = JSON.parse(raw);
+          return data && data.registered === true && data.name;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      /* ----- Marcar como registado (apenas após confirmação do backend) ----- */
+      function markRegistered(name, reason) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            registered: true,
+            name: name,
+            reason: reason || '',
+            timestamp: Date.now()
+          }));
+        } catch (e) { /* quota ou modo privado — ignorar */ }
+      }
+
+      /* ----- Abrir modal ----- */
+      function openGate() {
+        lastFocused = document.activeElement;
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Foco inicial: primeiro no card, depois no input
+        setTimeout(function () {
+          if (nameInput) nameInput.focus();
+        }, 320);
+      }
+
+      /* ----- Fechar modal ----- */
+      function closeGate() {
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+          setTimeout(function () { lastFocused.focus(); }, 350);
+        }
+      }
+
+      /* ----- Mostrar erro ----- */
+      function showError(message) {
+        nameError.textContent = message;
+        nameError.classList.add('is-visible');
+        nameInput.classList.add('has-error');
+        nameInput.setAttribute('aria-invalid', 'true');
+      }
+
+      /* ----- Limpar erro ----- */
+      function clearError() {
+        nameError.textContent = '';
+        nameError.classList.remove('is-visible');
+        nameInput.classList.remove('has-error');
+        nameInput.removeAttribute('aria-invalid');
+      }
+
+      /* ----- Validar nome ----- */
+      function validateName(value) {
+        var trimmed = (value || '').trim();
+        if (!trimmed) {
+          return { valid: false, error: 'Por favor, escreve o teu nome para continuares.' };
+        }
+        if (trimmed.length < 2) {
+          return { valid: false, error: 'O nome deve ter pelo menos 2 caracteres.' };
+        }
+        if (trimmed.length > 80) {
+          return { valid: false, error: 'O nome é demasiado longo.' };
+        }
+        // Apenas letras, espaços, hífenes e apóstrofos
+        if (!/^[A-Za-zÀ-ÖØ-öø-ÿ' \-]+$/.test(trimmed)) {
+          return { valid: false, error: 'O nome contém caracteres inválidos.' };
+        }
+        return { valid: true, value: trimmed };
+      }
+
+      /* ----- Submissão com fetch + timeout ----- */
+      function submitToServer(payload) {
+        // Se não houver endpoint definido, rejeita de forma explícita
+        // para NUNCA fingir um sucesso que não aconteceu.
+        if (!ENDPOINT) {
+          return Promise.reject({
+            code: 'NO_ENDPOINT',
+            message: 'O serviço de registo ainda não está disponível. Tenta novamente mais tarde.'
+          });
+        }
+
+        var controller = new AbortController();
+        var timeout = setTimeout(function () { controller.abort(); }, TIMEOUT_MS);
+
+        return fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        }).then(function (response) {
+          clearTimeout(timeout);
+          if (!response.ok) {
+            return response.json().catch(function () { return {}; }).then(function (data) {
+              throw {
+                code: 'HTTP_' + response.status,
+                message: data && data.message ? data.message : 'Não foi possível concluir o registo.'
+              };
+            });
+          }
+          return response.json().catch(function () { return {}; });
+        }).catch(function (err) {
+          clearTimeout(timeout);
+          if (err && err.name === 'AbortError') {
+            throw { code: 'TIMEOUT', message: 'O servidor demorou demasiado a responder. Tenta novamente.' };
+          }
+          if (err && err.code) throw err; // erro já estruturado
+          throw { code: 'NETWORK', message: 'Falha de rede. Verifica a tua ligação e tenta novamente.' };
+        });
+      }
+
+      /* ----- Estado do botão ----- */
+      function setLoading(loading) {
+        submitting = loading;
+        submitBtn.disabled = loading;
+        if (loading) {
+          submitBtn.classList.add('is-loading');
+          submitBtn.classList.remove('is-success');
+          submitBtn.querySelector('.visitor-gate-submit-text').textContent = 'A registar...';
+        } else {
+          submitBtn.classList.remove('is-loading');
+          submitBtn.querySelector('.visitor-gate-submit-text').textContent = 'Entrar no portfólio';
+        }
+      }
+
+      function setSuccess() {
+        submitBtn.classList.add('is-success');
+        submitBtn.classList.remove('is-loading');
+        submitBtn.querySelector('.visitor-gate-submit-text').textContent = 'Bem-vindo!';
+        submitBtn.querySelector('.visitor-gate-submit-arrow').textContent = '✓';
+      }
+
+      /* ----- Submissão do formulário ----- */
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (submitting) return;
+
+        clearError();
+        var validation = validateName(nameInput.value);
+        if (!validation.valid) {
+          showError(validation.error);
+          nameInput.focus();
+          return;
+        }
+
+        var payload = {
+          name: validation.value,
+          reason: (reasonInput.value || '').trim(),
+          page: window.location.pathname,
+          referrer: document.referrer || '',
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString()
+        };
+
+        setLoading(true);
+
+        submitToServer(payload)
+          .then(function () {
+            markRegistered(payload.name, payload.reason);
+            setSuccess();
+            setTimeout(function () {
+              closeGate();
+              // Reset após fecho, para o caso de ser reaberto
+              setTimeout(function () {
+                form.reset();
+                reasonInput.value = '';
+                reasonsWrap.querySelectorAll('.visitor-gate-reason').forEach(function (b) {
+                  b.classList.remove('is-selected');
+                  b.setAttribute('aria-pressed', 'false');
+                });
+                setLoading(false);
+                submitBtn.classList.remove('is-success');
+                submitBtn.querySelector('.visitor-gate-submit-arrow').textContent = '→';
+                submitBtn.querySelector('.visitor-gate-submit-text').textContent = 'Entrar no portfólio';
+              }, 400);
+            }, 900);
+          })
+          .catch(function (err) {
+            setLoading(false);
+            showError(err && err.message ? err.message : 'Ocorreu um erro inesperado. Tenta novamente.');
+            nameInput.focus();
+          });
+      });
+
+      /* ----- Limpar erro ao escrever ----- */
+      nameInput.addEventListener('input', function () {
+        if (nameError.classList.contains('is-visible')) clearError();
+      });
+
+      /* ----- Selector de motivos ----- */
+      if (reasonsWrap) {
+        reasonsWrap.addEventListener('click', function (event) {
+          var btn = event.target.closest('.visitor-gate-reason');
+          if (!btn) return;
+
+          var isSelected = btn.classList.contains('is-selected');
+
+          // Desmarcar todos
+          reasonsWrap.querySelectorAll('.visitor-gate-reason').forEach(function (b) {
+            b.classList.remove('is-selected');
+            b.setAttribute('aria-pressed', 'false');
+          });
+
+          if (isSelected) {
+            // Toggle off
+            reasonInput.value = '';
+          } else {
+            btn.classList.add('is-selected');
+            btn.setAttribute('aria-pressed', 'true');
+            reasonInput.value = btn.getAttribute('data-reason') || '';
+          }
+        });
+      }
+
+      /* ----- Focus trap dentro do modal ----- */
+      function getFocusable() {
+        return Array.prototype.slice.call(
+          card.querySelectorAll(
+            'button:not([disabled]), input:not([disabled]), [href], select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter(function (el) {
+          return el.offsetParent !== null;
+        });
+      }
+
+      overlay.addEventListener('keydown', function (event) {
+        if (event.key !== 'Tab') return;
+
+        var focusable = getFocusable();
+        if (focusable.length === 0) return;
+
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      /* ----- Bloquear Escape (não pode dispensar) ----- */
+      overlay.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }, true);
+
+      /* ----- Inicialização ----- */
+      function init() {
+        if (isRegistered()) {
+          // Já registado — não mostrar o modal
+          overlay.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        // Pequeno atraso para a página respirar antes do modal aparecer
+        setTimeout(openGate, 4000);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+  <script>
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    const languageToggle = document.getElementById('languageToggle');
+
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+      menu.textContent = open ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.textContent = '☰';
+    }));
+
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      const filter = button.dataset.filter;
+      document.querySelectorAll('.project').forEach(card => {
+        card.hidden = filter !== 'all' && !card.dataset.cats.split(' ').includes(filter);
+      });
+    }));
+
+    // Each entry is [selector, Portuguese, English]. The existing layout and project imagery stay unchanged.
+    const translations = [
+      ['.nav a:nth-child(1)', 'Sobre mim', 'About'],
+      ['.nav a:nth-child(2)', 'Competências', 'Skills'],
+      ['.nav a:nth-child(3)', 'Conquistas', 'Achievements'],
+      ['.nav a:nth-child(4)', 'Projetos', 'Projects'],
+      ['.nav a:nth-child(5)', 'Contacto', 'Contact'],
+      ['.eyebrow', '<span class="pin">●</span> ANGOLA', '<span class="pin">●</span> ANGOLA'],
+      ['.role', 'PROGRAMADOR FULL STACK<br>DESENVOLVEDOR IoT · EMPREENDEDOR TECNOLÓGICO', 'FULL STACK DEVELOPER<br>IoT DEVELOPER · TECH ENTREPRENEUR'],
+      ['.hero-desc', 'Transformo ideias em tecnologia real.', 'Transforming ideas into real-world technology.'],
+      ['.actions .btn.primary', 'EXPLORAR PROJETOS <span>→</span>', 'EXPLORE PROJECTS <span>→</span>'],
+      ['.actions .btn:not(.primary)', 'A MINHA HISTÓRIA', 'MY STORY'],
+      ['.section-kicker:nth-of-type(1)', 'AS MINHAS COMPETÊNCIAS', 'MY SKILLS'],
+      ['.intro .display', 'AS FERRAMENTAS POR TRÁS<br>DAS IDEIAS.', 'THE TOOLS BEHIND<br>THE IDEAS.'],
+      ['.intro p', 'Tecnologias que utilizo para transformar problemas complexos em soluções funcionais.', 'Technologies I use to turn complex problems into working solutions.'],
+      ['.skill-card:nth-child(1) h3', '▣ &nbsp; FRONTEND', '▣ &nbsp; FRONTEND'],
+      ['.skill-card:nth-child(2) h3', '◉ &nbsp; BACKEND', '◉ &nbsp; BACKEND'],
+      ['.skill-card:nth-child(3) h3', '▣ &nbsp; BASES DE DADOS', '▣ &nbsp; DATABASES'],
+      ['.skill-card:nth-child(4) h3', '▣ &nbsp; DISPOSITIVOS MÓVEIS', '▣ &nbsp; MOBILE'],
+      ['.skill-card:nth-child(5) h3', '▣ &nbsp; SISTEMAS EMBARCADOS E IoT', '▣ &nbsp; EMBEDDED SYSTEMS & IoT'],
+      ['.about-copy .section-kicker', 'SOBRE MIM', 'ABOUT ME'],
+      ['.about-copy .display', 'PARA ALÉM<br><span class="yellow">DO CÓDIGO.</span>', 'BEYOND<br><span class="yellow">THE CODE.</span>'],
+      ['.impact h3', 'TECNOLOGIA<br>+<br>IMPACTO', 'TECHNOLOGY<br>+<br>IMPACT'],
+      ['.impact li:nth-child(1)', 'Desenvolvimento Web', 'Web Development'],
+      ['.impact li:nth-child(2)', 'Aplicações Móveis', 'Mobile Applications'],
+      ['.impact li:nth-child(3)', 'IoT e Sistemas Embebidos', 'IoT & Embedded Systems'],
+      ['.impact li:nth-child(4)', 'Bases de Dados e Sistemas', 'Databases & Systems'],
+      ['.impact li:nth-child(5)', 'Empreendedorismo', 'Entrepreneurship'],
+      ['.quote', '<span class="yellow">“</span> A melhor forma de prever<br>o futuro é criá-lo.”<br><small>— Paulo Feidão</small>', '<span class="yellow">“</span> The best way to predict<br>the future is to create it.”<br><small>— Paulo Feidão</small>'],
+      ['.achievements .section-kicker', 'CONQUISTAS', 'ACHIEVEMENTS'],
+      ['.achievements .display', 'CONSTRUÍDO COM CURIOSIDADE.<br>RECONHECIDO PELA EXECUÇÃO.', 'BUILT THROUGH CURIOSITY.<br>RECOGNIZED THROUGH EXECUTION.'],
+      ['.count span', 'TÍTULOS E<br>RECONHECIMENTOS', 'TITLES &<br>RECOGNITIONS'],
+      ['.award:nth-child(1) .award-text', 'Vencedor do NASA Space Apps Challenge<small>Categoria Melhor Apresentação</small>', 'NASA Space Apps Challenge Winner<small>Best Presentation Category</small>'],
+      ['.award:nth-child(2) .award-text', 'Tricampeão da Feira de Tecnologia do IMPTEL<small>IMPTEL</small>', 'Three-time IMPTEL Technology Fair Champion<small>IMPTEL</small>'],
+      ['.award:nth-child(3) .award-text', 'Tricampeão do Arduino Day TecMicro<small>TecMicro</small>', 'Three-time Arduino Day TecMicro Champion<small>TecMicro</small>'],
+      ['.award:nth-child(4) .award-text', 'Medalha de Honra<small>Diretor Técnico do Núcleo Científico da Escola</small>', 'Medal of Honour<small>Technical Director of the School Science Club</small>'],
+      ['.award:nth-child(5) .award-text', 'Tricampeão da Feira de Empreendedorismo do IMPTEL<small>Edições 2025/2026</small>', 'Three-time IMPTEL Entrepreneurship Fair Champion<small>2025/2026 editions</small>'],
+      ['.projects .section-kicker', 'PROJETOS EM DESTAQUE', 'FEATURED PROJECTS'],
+      ['.projects .display', 'TRABALHOS SELECIONADOS.', 'SELECTED WORKS.'],
+      ['.project-head p', 'Software, aplicações e sistemas conectados desenvolvidos para resolver problemas reais.', 'Software, applications and connected systems built to solve real problems.'],
+      ['.filter[data-filter="all"]', 'TODOS', 'ALL'],
+      ['.filter[data-filter="web"]', 'WEB', 'WEB'],
+      ['.filter[data-filter="mobile"]', 'MÓVEL', 'MOBILE'],
+      ['.filter[data-filter="iot"]', 'IoT', 'IoT'],
+      ['.filter[data-filter="database"]', 'BASES DE DADOS', 'DATABASES'],
+      ['.filter[data-filter="academic"]', 'ACADÉMICO', 'ACADEMIC'],
+      ['.project:nth-child(1) h3', 'Control Z', 'Control Z'],
+      ['.project:nth-child(1) p', 'Plataforma de Desenvolvimento Académico', 'Academic Development Platform'],
+      ['.project:nth-child(1) .tags', '<span>Aplicação Web</span><span>HTML</span><span>CSS</span><span>JS</span><span>Node.js</span>', '<span>Web Application</span><span>HTML</span><span>CSS</span><span>JS</span><span>Node.js</span>'],
+      ['.project:nth-child(2) h3', 'Banda do Inglês', 'Banda do Inglês'],
+      ['.project:nth-child(2) p', 'Aplicação de Aprendizagem Gamificada', 'Gamified Learning App'],
+      ['.project:nth-child(2) .tags', '<span>Aplicação Móvel</span><span>React Native</span><span>Expo</span>', '<span>Mobile Application</span><span>React Native</span><span>Expo</span>'],
+      ['.project:nth-child(3) h3', 'EBiTDA', 'EBiTDA'],
+      ['.project:nth-child(3) p', 'Informação do Mercado Financeiro', 'Financial Market Information'],
+      ['.project:nth-child(3) .tags', '<span>Aplicação Web</span><span>React</span><span>Node.js</span><span>PostgreSQL</span>', '<span>Web Application</span><span>React</span><span>Node.js</span><span>PostgreSQL</span>'],
+      ['.project:nth-child(4) h3', 'Arduino e ESP32', 'Arduino & ESP32'],
+      ['.project:nth-child(4) p', 'IoT e Sistemas Embebidos', 'IoT & Embedded Systems'],
+      ['.project:nth-child(4) .tags', '<span>Projeto de Hardware</span><span>Arduino</span><span>ESP32</span>', '<span>Hardware Project</span><span>Arduino</span><span>ESP32</span>'],
+      ['.project:nth-child(5) h3', 'Desenvolvimento Web', 'Web Development'],
+      ['.project:nth-child(5) p', 'Websites Profissionais', 'Professional Websites'],
+      ['.project:nth-child(5) .tags', '<span>Aplicação Web</span><span>HTML</span><span>CSS</span><span>JS</span>', '<span>Web Application</span><span>HTML</span><span>CSS</span><span>JS</span>'],
+      ['.project:nth-child(6) h3', 'Sistemas de Gestão', 'Management Systems'],
+      ['.project:nth-child(6) p', 'Soluções Baseadas em Bases de Dados', 'Database-Driven Solutions'],
+      ['.project:nth-child(6) .tags', '<span>Aplicação Web</span><span>Node.js</span><span>Express.js</span><span>MySQL</span>', '<span>Web Application</span><span>Node.js</span><span>Express.js</span><span>MySQL</span>'],
+      ['.contact .section-kicker', 'ENTRE EM CONTACTO', 'GET IN TOUCH'],
+      ['.contact .display', 'VAMOS CONSTRUIR ALGO<br><span class="yellow">COM SIGNIFICADO.</span>', `LET'S BUILD SOMETHING<br><span class="yellow">MEANINGFUL.</span>`],
+      ['.contact-inner > div:nth-child(2) p', 'Tenho interesse em ideias, projetos e oportunidades que transformem tecnologia em valor real.', "I'm interested in ideas, projects and opportunities that turn technology into real value."],
+      ['.contact-inner .btn.primary', 'ENTRAR EM CONTACTO <span>→</span>', 'GET IN TOUCH <span>→</span>'],
+      ['.socials', 'SIGA-ME<div class="social-icons"><a href="https://github.com/paulofeidao" aria-label="GitHub">◉</a><a href="https://www.linkedin.com/in/paulo-feid%C3%A3o-9152b0443/" aria-label="LinkedIn">in</a><a href="https://instagram.com/_controlz.ao" aria-label="Instagram">◎</a><a href="https://www.tiktok.com/@controlz_ao" aria-label="TikTok">♪</a><a href="https://controlz-ao.netlify.app/" aria-label="Website">⊕</a></div>', 'FOLLOW ME<div class="social-icons"><a href="https://github.com/paulofeidao" aria-label="GitHub">◉</a><a href="https://www.linkedin.com/in/paulo-feid%C3%A3o-9152b0443/" aria-label="LinkedIn">in</a><a href="https://instagram.com/_controlz.ao" aria-label="Instagram">◎</a><a href="https://www.tiktok.com/@controlz_ao" aria-label="TikTok">♪</a><a href="https://controlz-ao.netlify.app/" aria-label="Website">⊕</a></div>'],
+      ['.copyright span:nth-child(1)', '© 2026 Paulo Feidão. Todos os direitos reservados.', '© 2026 Paulo Feidão. All rights reserved.'],
+      ['.copyright span:nth-child(2)', 'Angola · Programador Full Stack · Desenvolvedor IoT · Empreendedor Tecnológico', 'Angola · Full Stack Developer · IoT Developer · Tech Entrepreneur']
+    ];
+
+    let currentLanguage = 'pt';
+    function setLanguage(language) {
+      currentLanguage = language;
+      translations.forEach(([selector, pt, en]) => {
+        const element = document.querySelector(selector);
+        if (element) element.innerHTML = language === 'pt' ? pt : en;
+      });
+      document.documentElement.lang = language;
+      languageToggle.textContent = language === 'pt' ? 'EN' : 'PT';
+      languageToggle.setAttribute('aria-pressed', String(language === 'en'));
+      languageToggle.setAttribute('aria-label', language === 'pt' ? 'Mudar para inglês' : 'Mudar para português');
+    }
+    languageToggle.addEventListener('click', () => setLanguage(currentLanguage === 'pt' ? 'en' : 'pt'));
+    setLanguage('pt');
+
+    // Interactive biography module. It only controls elements inside #sobre.
+    const storyCopy = {
+      'about-kicker': ['SOBRE MIM', 'ABOUT ME'],
+      'about-title': ['PARA ALÉM<br><span class="yellow">DO CÓDIGO.</span>', 'BEYOND<br><span class="yellow">THE CODE.</span>'],
+      'about-p1': ['Sou Paulo Feidão, programador Full Stack e desenvolvedor IoT. Comecei pela robótica e fui aprendendo cada tecnologia à medida que os meus projetos exigiam novas soluções — do C++ e microcontroladores ao desenvolvimento web, bases de dados e aplicações móveis.', 'I am Paulo Feidão, a Full Stack Developer and IoT developer. I started with robotics and learned each technology as my projects demanded new solutions — from C++ and microcontrollers to web development, databases, and mobile applications.'],
+      'about-p2': ['Sou fundador e COO da Control Z, Diretor Técnico do Núcleo Científico e vencedor de reconhecimentos em tecnologia e empreendedorismo, incluindo a categoria Melhor Apresentação do NASA Space Apps Challenge. Gosto de transformar problemas reais em soluções digitais bem construídas.', 'I am the founder and COO of Control Z, Technical Director of the Science Club, and a recipient of technology and entrepreneurship awards, including Best Presentation at the NASA Space Apps Challenge. I enjoy turning real problems into well-built digital solutions.'],
+      'recruiter-label': ['EM POUCAS PALAVRAS', 'AT A GLANCE'],
+      'recruiter-title': ['Aprendi a programar para fazer as coisas funcionarem. Continuei para as tornar melhores.', 'I learned to code to make things work. Then I kept learning to make them better.'],
+      'recruiter-text': ['A minha jornada combina desenvolvimento Full Stack, IoT, aplicações móveis e UI/UX com execução de projetos, liderança técnica e mentalidade empreendedora.', 'My journey combines Full Stack development, IoT, mobile apps, and UI/UX with project execution, technical leadership, and an entrepreneurial mindset.'],
+      'read-story': ['Conhecer a minha história', 'Read my story'],
+      'story-note': ['17 capítulos · da robótica aos projetos reais', '17 chapters · from robotics to real-world projects'],
+      'impact-title': ['TECNOLOGIA<br>+<br>IMPACTO', 'TECHNOLOGY<br>+<br>IMPACT'],
+      'impact-web': ['Desenvolvimento Web', 'Web Development'], 'impact-mobile': ['Aplicações Móveis', 'Mobile Applications'], 'impact-iot': ['IoT e Sistemas Embebidos', 'IoT & Embedded Systems'], 'impact-data': ['Bases de Dados e Sistemas', 'Databases & Systems'], 'impact-business': ['Empreendedorismo', 'Entrepreneurship'],
+      'impact-quote': ['A melhor forma de prever<br>o futuro é criá-lo.', 'The best way to predict<br>the future is to create it.'],
+      'timeline-label': ['A MINHA JORNADA', 'MY JOURNEY'], 'reading-progress': ['PROGRESSO DA LEITURA', 'READING PROGRESS'], 'story-side-caption': ['Curiosidade. Execução. Evolução.', 'Curiosity. Execution. Evolution.'], 'full-story-label': ['A HISTÓRIA COMPLETA', 'THE FULL STORY'], 'chapter-art-label': ['CAPÍTULO', 'CHAPTER'], 'previous-label': ['Anterior', 'Previous'], 'next-label': ['Seguinte', 'Next']
+    };
+
+    const storyChapters = [
+      {
+        title: ['O início: quando as máquinas começaram a obedecer às minhas ideias', 'The beginning: when machines started following my ideas'], nav: ['A descoberta', 'The discovery'], image: 0, body: [
+          `<p>A minha carreira como programador começou na <strong>10.ª classe</strong>, quando entrei para o Núcleo Científico da escola e descobri a robótica. Aprendi que, para fazer um robô mover-se e obedecer às nossas instruções, era preciso dar-lhe uma sequência lógica de comandos: um algoritmo.</p><p>Nos filmes, eu admirava os programadores que escreviam sem olhar para o teclado. Quis desenvolver a mesma capacidade e comecei a estudar dactilografia com o Typing Master. Essa foi uma das primeiras competências que desenvolvi no meu percurso.</p><p>Antes de dominar muitas linguagens, decidi treinar a ferramenta com que iria escrever as minhas ideias: o teclado.</p>`,
+          `<p>My journey as a developer began in <strong>10th grade</strong>, when I joined my school's Science Club and discovered robotics. I learned that making a robot move and follow instructions required a logical sequence of commands: an algorithm.</p><p>In movies, I admired programmers who typed without looking at the keyboard. I wanted to develop that skill, so I began practicing touch typing with Typing Master. It was one of the first skills I built on this journey.</p><p>Before mastering many languages, I trained the tool I would use to write my ideas: the keyboard.</p>`]
+      },
+      {
+        title: ['C++ e mais de dez livros', 'C++ and more than ten books'], nav: ['A base técnica', 'Technical foundations'], image: 1, body: [
+          `<p>Comecei com <strong>C++ para microcontroladores</strong>, porque queria dar vida a projetos de robótica. Percebi rapidamente que havia muito para aprender e decidi estudar a fundo, em vez de apenas copiar código.</p><p>Descarreguei mais de dez livros e continuei a estudar até reconhecer a utilidade dos comandos nativos que encontrava. O meu objetivo era compreender a lógica e conseguir construir soluções sem depender sempre de instruções alheias.</p><p>A programação começou a deixar de ser apenas uma matéria: tornou-se uma ferramenta para resolver problemas.</p>`,
+          `<p>I started with <strong>C++ for microcontrollers</strong> because I wanted to bring robotics projects to life. I quickly realized how much there was to learn, so I focused on understanding the code rather than simply copying it.</p><p>I downloaded more than ten books and kept studying until I could identify the purpose of the native commands I encountered. My goal was to understand the logic and build solutions without always depending on someone else's instructions.</p><p>Programming became more than a subject: it became a tool for solving problems.</p>`]
+      },
+      {
+        title: ['Quando o hardware já não era suficiente', 'When hardware was no longer enough'], nav: ['A web entra em cena', 'The web enters'], image: 2, body: [
+          `<p>Depois de aprender a programar microcontroladores, quis controlar dispositivos através de páginas web. Para isso, precisei de aprender <strong>HTML, CSS e JavaScript</strong>. Comecei o Front-end no final da 10.ª classe.</p><p>Na 11.ª classe, avancei para o Back-end com <strong>Node.js e Express.js</strong>, criando sistemas de cadastro e aprendendo a trabalhar com pedidos HTTP. Enquanto estudava Node.js, aprendi também Handlebars para trabalhar com modelos e páginas dinâmicas.</p><p>Depois vieram as bases de dados: comecei com SQL, aprendi PostgreSQL e explorei MongoDB, cuja estrutura de documentos considerei conveniente para trabalhar com JavaScript. Assim fui construindo a minha base Full Stack.</p>`,
+          `<p>After learning to program microcontrollers, I wanted to control devices through web pages. That meant learning <strong>HTML, CSS, and JavaScript</strong>. I began Front-end development at the end of 10th grade.</p><p>In 11th grade, I moved into Back-end development with <strong>Node.js and Express.js</strong>, building registration systems and learning to work with HTTP requests. While learning Node.js, I also learned Handlebars for dynamic templates and pages.</p><p>Then came databases: I started with SQL, learned PostgreSQL, and explored MongoDB, whose document structure felt convenient for JavaScript. Step by step, I built my Full Stack foundation.</p>`]
+      },
+      {
+        title: ['Do Arduino ao ESP32 e aos dados em tempo real', 'From Arduino to ESP32 and real-time data'], nav: ['Hardware conectado', 'Connected hardware'], image: 3, body: [
+          `<p>Queria que as minhas páginas fizessem mais do que apresentar informação: queria que controlassem dispositivos reais. Migrei do Arduino para o <strong>ESP32</strong> e aprofundei a comunicação entre hardware e sistemas web.</p><p>Aprendi a trabalhar com APIs, pedidos HTTP e REST, permitindo que o ESP32 recebesse requisições e executasse ações. Depois, quando quis apresentar dados em tempo real, aprendi <strong>Socket.IO</strong>.</p><p>Uma necessidade prática levava-me à tecnologia seguinte. Foi assim que liguei eletrónica, interfaces, servidores, bases de dados e comunicação em tempo real.</p>`,
+          `<p>I wanted my pages to do more than display information: I wanted them to control real devices. I moved from Arduino to the <strong>ESP32</strong> and deepened my understanding of communication between hardware and web systems.</p><p>I learned to work with APIs, HTTP requests, and REST, allowing the ESP32 to receive requests and perform actions. Later, when I wanted to display real-time data, I learned <strong>Socket.IO</strong>.</p><p>A practical need led me to the next technology. That's how I connected electronics, interfaces, servers, databases, and real-time communication.</p>`]
+      },
+      {
+        title: ['A Control Z nasceu de um Ctrl + Z', 'Control Z was born from a Ctrl + Z'], nav: ['A origem da marca', 'The brand origin'], image: 4, body: [
+          `<p>Na 10.ª classe, comecei a pensar em criar uma empresa e dar mentorias a grupos da escola. A primeira iniciativa chamava-se <strong>Battle Oracle</strong>, mas o nome não representava bem a visão que eu tinha.</p><p>Um dia, enquanto programava, cometi um erro e o projeto ficou com problemas. Usei o atalho <strong>Ctrl + Z</strong>, consegui desfazer a alteração e resolver a situação. Pensei: se aquele atalho me ajudou a resolver um problema, a minha iniciativa também podia dedicar-se a resolver problemas.</p><p>Assim nasceu o nome <strong>Control Z</strong>. A equipa desenvolveu numerosos projetos, mas na 11.ª classe enfrentámos vários furtos que nos fizeram perder recursos e nos obrigaram a adaptar-nos. Nem tudo foi prémio e sucesso; também houve perdas e dificuldades reais.</p>`,
+          `<p>In 10th grade, I began thinking about building a company and mentoring school project teams. The first initiative was called <strong>Battle Oracle</strong>, but the name did not really represent my vision.</p><p>One day, while coding, I made a mistake and the project broke. I used the <strong>Ctrl + Z</strong> shortcut, undid the change, and solved the problem. I thought: if that shortcut helped me fix a problem, my initiative could also focus on solving problems.</p><p>That's how <strong>Control Z</strong> got its name. The team built many projects, but in 11th grade we faced several thefts that cost us resources and forced us to adapt. The journey was not all awards and success; it also involved real losses and difficulties.</p>`]
+      },
+      {
+        title: ['Uma aplicação académica e 19 valores em Matemática', 'An academic app and a 19 in Mathematics'], nav: ['Projetos na escola', 'Projects at school'], image: 5, body: [
+          `<p>Quis aplicar o que sabia à vida escolar. Desenvolvi uma aplicação que reunia os conteúdos que os alunos iriam estudar ao longo do ano, permitindo-lhes conhecer os temas antecipadamente e preparar-se melhor.</p><p>A aplicação aumentou a minha notoriedade na escola. Eu também era muito exigente com os resultados académicos: conseguia tirar <strong>19 valores em Matemática, numa escala de 20</strong>, e mesmo assim ficava insatisfeito — hoje consigo rir-me disso.</p><p>Com o conhecimento técnico que fui acumulando, tornei-me <strong>Diretor Técnico do Núcleo Científico</strong>, passando a apoiar também projetos de outros estudantes.</p>`,
+          `<p>I wanted to apply what I knew to school life. I built an app that gathered the content students would study throughout the year, allowing them to preview topics and prepare in advance.</p><p>The app made me much more well-known at school. I was also demanding about academic results: I could score <strong>19 out of 20 in Mathematics</strong> and still feel dissatisfied — something I can laugh about now.</p><p>As I accumulated technical knowledge, I became <strong>Technical Director of the Science Club</strong>, taking on the responsibility of supporting other students' projects too.</p>`]
+      },
+      {
+        title: ['Um projeto feito num dia e o primeiro prémio', 'A one-day project and the first award'], nav: ['O primeiro pódio', 'First podium'], image: 6, body: [
+          `<p>No final da 11.ª classe, participei numa feira num ambiente turbulento. Poucas pessoas acreditavam que o nosso projeto ganharia alguma coisa. Uma colega acreditou, ajudou-me na montagem e contribuiu para a apresentação estética.</p><p>Construímos o projeto em <strong>apenas um dia</strong>, enquanto outras equipas trabalhavam havia semanas. Chegámos quase a terminar a avaliação e conquistámos o <strong>3.º lugar</strong>.</p><p>Não aprendi que um dia de trabalho é sempre melhor do que semanas de preparação. Aprendi que execução, decisões rápidas, colaboração e conhecimento acumulado podem fazer a diferença — e nunca esqueci quem acreditou em nós.</p>`,
+          `<p>At the end of 11th grade, I entered a school fair during a turbulent period. Few people believed our project would win anything. One classmate believed in it, helped with assembly, and contributed to its visual presentation.</p><p>We built the project in <strong>just one day</strong>, while other teams had been working for weeks. We were almost at the end of the evaluation process when we won <strong>third place</strong>.</p><p>I did not learn that one day of work is always better than weeks of preparation. I learned that execution, quick decisions, collaboration, and accumulated knowledge can make a difference — and I never forgot the person who believed in us.</p>`]
+      },
+      {
+        title: ['Aprender a construir melhor, não apenas mais', 'Learning to build better, not just more'], nav: ['Arquitetura e escala', 'Architecture & scale'], image: 7, body: [
+          `<p>Na 12.ª classe, percebi que fazer um projeto funcionar não era suficiente. Precisava de pensar em <strong>arquitetura de software, engenharia de software, segurança, eficiência e escalabilidade</strong>.</p><p>Comecei a organizar melhor o código e a pensar na manutenção e no crescimento dos sistemas. Com a experiência e os novos métodos, passei a desenvolver determinados projetos até <strong>dez vezes mais rapidamente</strong>, segundo a minha avaliação.</p><p>A evolução deixou de ser apenas aprender mais tecnologias: passou também a significar melhorar a forma como trabalho e a qualidade das soluções que entrego.</p>`,
+          `<p>In 12th grade, I realized that making a project work was not enough. I needed to think about <strong>software architecture, software engineering, security, efficiency, and scalability</strong>.</p><p>I began organizing code better and thinking about system maintenance and growth. With experience and new methods, I was able to develop certain projects up to <strong>ten times faster</strong>, by my own assessment.</p><p>Progress no longer meant only learning more technologies; it also meant improving how I work and the quality of the solutions I deliver.</p>`]
+      },
+      {
+        title: ['React Native, aplicações móveis e UI/UX', 'React Native, mobile apps, and UI/UX'], nav: ['A experiência do utilizador', 'User experience'], image: 8, body: [
+          `<p>No final da 12.ª classe, comecei a estudar React.js, mas avancei para <strong>React Native</strong> antes de terminar esse estudo. Foi a minha entrada no desenvolvimento de aplicações móveis, com foco em aplicações organizadas, escaláveis e visualmente atraentes.</p><p>Também aprofundei UI e UX. Percebi que um produto não deve apenas funcionar: precisa de ser intuitivo, bem apresentado e fácil de utilizar. Esse conhecimento elevou a qualidade visual das minhas páginas e aplicações.</p>`,
+          `<p>At the end of 12th grade, I started studying React.js, but moved to <strong>React Native</strong> before finishing that learning path. This introduced me to mobile app development, with a focus on organized, scalable, and visually appealing apps.</p><p>I also deepened my knowledge of UI and UX. I realized that a product must do more than work: it should be intuitive, well-presented, and easy to use. That knowledge raised the visual quality of my websites and applications.</p>`]
+      },
+      {
+        title: ['A Feira de Tecnologia e a Medalha de Honra', 'The Technology Fair and the Medal of Honour'], nav: ['Liderança técnica', 'Technical leadership'], image: 9, body: [
+          `<p>Como Diretor Técnico do Núcleo Científico, na Feira de Tecnologia não me concentrei apenas nos meus próprios trabalhos. Desenvolvi projetos e ajudei várias equipas a pôr os seus projetos a funcionar no dia do evento.</p><p>O trabalho foi reconhecido com a <strong>Medalha de Honra como Diretor Técnico do Núcleo Científico</strong>. Para mim, essa distinção representa o momento em que o conhecimento que adquiriu deixou de servir apenas os meus projetos e passou também a ajudar outros estudantes a concretizar os seus.</p>`,
+          `<p>As Technical Director of the Science Club, I did not focus only on my own work at the Technology Fair. I built projects and helped several teams get their projects working on the day of the event.</p><p>The work was recognized with the <strong>Medal of Honour as Technical Director of the Science Club</strong>. To me, this distinction represents a moment when the knowledge I had gained was no longer used only for my own projects, but also helped other students bring theirs to life.</p>`]
+      },
+      {
+        title: ['A Euforia e o empreendedorismo', 'Euforia and entrepreneurship'], nav: ['Visão de negócio', 'Business mindset'], image: 10, body: [
+          `<p>No final da 12.ª classe, liderei a empresa fictícia <strong>Euforia</strong> na Feira de Empreendedorismo. A experiência exigiu pensar para além do código: trabalhar uma ideia de negócio, organizar a proposta e apresentá-la.</p><p>Conquistámos o <strong>3.º lugar</strong>. A programação ensinou-me a construir; o empreendedorismo levou-me a pensar também no propósito, no valor e nas oportunidades que uma solução pode gerar.</p>`,
+          `<p>At the end of 12th grade, I led the fictional company <strong>Euforia</strong> at the Entrepreneurship Fair. The experience required thinking beyond code: developing a business idea, organizing the proposal, and presenting it.</p><p>We won <strong>third place</strong>. Programming taught me how to build; entrepreneurship also taught me to think about purpose, value, and the opportunities a solution can create.</p>`]
+      },
+      {
+        title: ['Tricampeão do Arduino Day da TecMicro', 'Three-time Arduino Day champion at TecMicro'], nav: ['A raiz da robótica', 'Back to robotics'], image: 11, body: [
+          `<p>O Arduino Day da <strong>TecMicro</strong>, empresa conhecida pela venda de materiais eletrónicos, voltou a ligar-me à área que esteve na origem da minha carreira: microcontroladores, eletrónica e programação.</p><p>Ao longo do percurso, tornei-me <strong>tricampeão do Arduino Day da TecMicro</strong>. Esse reconhecimento simboliza a continuidade do meu trabalho numa área em que comecei por aprender C++ e a transformar instruções em ações físicas.</p>`,
+          `<p><strong>TecMicro's Arduino Day</strong>, organized by a company known for selling electronic materials, connected me again with the field that started my career: microcontrollers, electronics, and programming.</p><p>Over the years, I became a <strong>three-time Arduino Day champion at TecMicro</strong>. That recognition represents my continued work in a field where I first learned C++ and how to turn instructions into physical actions.</p>`]
+      },
+      {
+        title: ['NASA Space Apps Challenge: Melhor Apresentação', 'NASA Space Apps Challenge: Best Presentation'], nav: ['Reconhecimento internacional', 'International recognition'], image: 12, body: [
+          `<p>No início da 12.ª classe, participei no <strong>NASA Space Apps Challenge</strong> e conquistámos a categoria de <strong>Melhor Apresentação</strong>.</p><p>Foi um reconhecimento importante num desafio de inovação tecnológica. A experiência reforçou uma lição: não basta construir uma solução; é necessário comunicar o problema, explicar a ideia e mostrar o valor do que foi desenvolvido.</p>`,
+          `<p>At the beginning of 12th grade, I participated in the <strong>NASA Space Apps Challenge</strong>, where our team won the <strong>Best Presentation</strong> category.</p><p>It was an important recognition in a technology innovation challenge. The experience reinforced a lesson: building a solution is not enough; you also need to communicate the problem, explain the idea, and show the value of what you created.</p>`]
+      },
+      {
+        title: ['Websites empresariais e o poder do design', 'Business websites and the power of design'], nav: ['Redesign e UI/UX', 'Redesign & UI/UX'], image: 13, body: [
+          `<p>Com o crescimento dos meus conhecimentos de UI e UX, comecei a analisar websites empresariais e a criar propostas de redesign para melhorar a apresentação, a organização e a experiência dos visitantes. Também comecei a produzir conteúdo para mostrar essas melhorias.</p><p>Até agora, nenhuma das empresas aderiu às propostas, embora os feedbacks tenham sido positivos. Aprendi que uma solução visualmente melhor não garante, por si só, a sua adoção: é preciso também compreender as decisões e as necessidades do negócio.</p>`,
+          `<p>As my UI and UX knowledge grew, I began reviewing business websites and creating redesign concepts to improve presentation, structure, and visitor experience. I also started producing content to showcase those improvements.</p><p>So far, none of the companies has adopted the proposals, although feedback has been positive. I learned that a visually stronger solution does not guarantee adoption on its own: you must also understand business needs and decision-making.</p>`]
+      },
+      {
+        title: ['Seis títulos e reconhecimentos', 'Six titles and recognitions'], nav: ['Resultados concretos', 'Tangible results'], image: 14, body: [
+          `<p>O meu percurso inclui o prémio de Melhor Apresentação no NASA Space Apps Challenge, a Medalha de Honra como Diretor Técnico, o 3.º lugar numa feira com um projeto feito num dia, o 3.º lugar na Feira de Empreendedorismo com a Euforia, e os títulos de tricampeão da Feira de Tecnologia do IMPTEL, do Arduino Day da TecMicro e da Feira de Empreendedorismo do IMPTEL, incluindo as edições de 2025/2026.</p><p>Também desenvolvi uma aplicação académica, participei em numerosos projetos da Control Z e ajudei outros trabalhos a funcionar durante a Feira de Tecnologia. Estes resultados representam execução, colaboração, liderança e capacidade de apresentar ideias.</p>`,
+          `<p>My journey includes Best Presentation at the NASA Space Apps Challenge, the Medal of Honour as Technical Director, third place at a fair with a project built in one day, third place at the Entrepreneurship Fair with Euforia, and three-time champion titles at the IMPTEL Technology Fair, TecMicro Arduino Day, and IMPTEL Entrepreneurship Fair, including the 2025/2026 editions.</p><p>I also built an academic app, contributed to many Control Z projects, and helped other teams get their work running during the Technology Fair. These results represent execution, collaboration, leadership, and the ability to present ideas.</p>`]
+      },
+      {
+        title: ['As coisas que fiz de forma diferente', 'Things I did differently'], nav: ['Curiosidade em ação', 'Curiosity in action'], image: 15, body: [
+          `<p>Aprendi dactilografia porque queria escrever como os programadores que admirava nos filmes. Estudei mais de dez livros de C++ para compreender, em vez de copiar. Aprendi tecnologias a partir das necessidades dos projetos. Transformei um atalho de teclado no nome de uma iniciativa. E comecei a propor melhorias para empresas mesmo sem ter garantido a sua implementação.</p><p>Nem todas as iniciativas deram o resultado comercial que eu queria. Nem todos os projetos foram fáceis e nem todas as pessoas acreditaram. Ainda assim, continuei a aprender e a construir.</p>`,
+          `<p>I learned touch typing because I wanted to type like the programmers I admired in movies. I studied more than ten C++ books to understand instead of copying. I learned technologies in response to project needs. I turned a keyboard shortcut into the name of an initiative. And I began proposing improvements to businesses even without securing implementation.</p><p>Not every initiative produced the commercial result I wanted. Not every project was easy, and not everyone believed in it. Still, I kept learning and building.</p>`]
+      },
+      {
+        title: ['Ainda estou a construir', 'I am still building'], nav: ['O próximo capítulo', 'What comes next'], image: 16, body: [
+          `<p>A minha história não é a de alguém que aprendeu uma linguagem e parou. Comecei por querer fazer robôs funcionar, depois precisei de interfaces, servidores, bases de dados, comunicação entre dispositivos, aplicações móveis e design. Criei a Control Z, enfrentei dificuldades, ajudei estudantes e procurei transformar conhecimento em oportunidades.</p><p>Hoje, identifico-me com o desenvolvimento Full Stack, as aplicações móveis e a Internet das Coisas. Continuo a aprender e quero construir soluções que combinem software, hardware, design e visão empresarial.</p><div class="story-quote">“Cada novo problema é uma oportunidade para descobrir algo que ainda não sei.”</div><p><strong>Sou Paulo Feidão.</strong> Programador Full Stack, desenvolvedor IoT e empreendedor tecnológico em construção. A minha história continua através dos problemas que escolho resolver e das soluções que consigo construir.</p>`,
+          `<p>My story is not about someone who learned one programming language and stopped. I started by wanting to make robots work, then needed interfaces, servers, databases, device communication, mobile apps, and design. I created Control Z, faced difficulties, helped students, and sought to turn knowledge into opportunities.</p><p>Today, I identify with Full Stack development, mobile apps, and the Internet of Things. I keep learning and want to build solutions that combine software, hardware, design, and business vision.</p><div class="story-quote">“Every new problem is an opportunity to discover something I do not yet know.”</div><p><strong>I am Paulo Feidão.</strong> A Full Stack Developer, IoT developer, and technology entrepreneur in the making. My story continues through the problems I choose to solve and the solutions I build.</p>`]
+      }
+    ];
+
+    const storyModal = document.getElementById('fullStoryModal');
+    const storyChapterList = document.getElementById('storyChapterList');
+    const storyReader = document.getElementById('storyReader');
+    let activeStoryChapter = 0;
+    let storyLanguage = 'pt';
+    const storyImageSources = [];
+    function collectStoryImages() {
+      const sources = [document.querySelector('.about-photo img'), ...document.querySelectorAll('.award img'), ...document.querySelectorAll('.project img')];
+      sources.forEach(img => { if (img && img.src) storyImageSources.push(img.src); });
+      storyChapters.forEach((chapter, i) => { chapter.imageSrc = storyImageSources[chapter.image % Math.max(1, storyImageSources.length)] || ''; });
+    }
+    function renderStoryList() {
+      storyChapterList.innerHTML = '';
+      storyChapters.forEach((chapter, index) => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'story-chapter-link' + (index === activeStoryChapter ? ' active' : '');
+        button.setAttribute('aria-current', index === activeStoryChapter ? 'step' : 'false');
+        const number = document.createElement('b'); number.textContent = String(index + 1).padStart(2, '0');
+        const label = document.createElement('span'); label.textContent = chapter.nav[storyLanguage === 'pt' ? 0 : 1];
+        button.append(number, label); button.addEventListener('click', () => renderStoryChapter(index)); storyChapterList.appendChild(button);
+      });
+    }
+    function renderStoryChapter(index) {
+      activeStoryChapter = Math.max(0, Math.min(storyChapters.length - 1, index));
+      const chapter = storyChapters[activeStoryChapter]; const langIndex = storyLanguage === 'pt' ? 0 : 1;
+      document.getElementById('storyChapterImage').src = chapter.imageSrc || '';
+      document.getElementById('storyChapterImage').alt = chapter.title[langIndex];
+      document.getElementById('storyArtTitle').textContent = chapter.title[langIndex].split(':')[0];
+      document.getElementById('storyChapterEyebrow').textContent = (storyLanguage === 'pt' ? 'CAPÍTULO ' : 'CHAPTER ') + String(activeStoryChapter + 1).padStart(2, '0');
+      document.getElementById('storyChapterTitle').innerHTML = chapter.title[langIndex].replace(/: /g, ':<br><em>') + (chapter.title[langIndex].includes(': ') ? '</em>' : '');
+      document.getElementById('storyChapterBody').innerHTML = chapter.body[langIndex];
+      document.getElementById('storyProgressText').textContent = `${activeStoryChapter + 1} / ${storyChapters.length}`;
+      document.getElementById('storyProgressBar').style.width = `${((activeStoryChapter + 1) / storyChapters.length) * 100}%`;
+      document.getElementById('storyStepLabel').textContent = (storyLanguage === 'pt' ? 'Capítulo ' : 'Chapter ') + `${activeStoryChapter + 1} ${storyLanguage === 'pt' ? 'de' : 'of'} ${storyChapters.length}`;
+      document.getElementById('storyPrev').disabled = activeStoryChapter === 0;
+      document.getElementById('storyNext').disabled = activeStoryChapter === storyChapters.length - 1;
+      document.getElementById('storyNext').querySelector('span').textContent = activeStoryChapter === storyChapters.length - 1 ? (storyLanguage === 'pt' ? 'Fim' : 'End') : (storyLanguage === 'pt' ? 'Seguinte' : 'Next');
+      renderStoryList(); storyReader.scrollTop = 0;
+    }
+    function setStoryLanguage(language) {
+      storyLanguage = language;
+      document.querySelectorAll('[data-story-copy]').forEach(el => {
+        const item = storyCopy[el.dataset.storyCopy]; if (item) el.innerHTML = item[language === 'pt' ? 0 : 1];
+      });
+      const close = document.getElementById('closeFullStory'); close.setAttribute('aria-label', language === 'pt' ? 'Fechar história' : 'Close story');
+      renderStoryChapter(activeStoryChapter);
+    }
+    function openStory() { storyModal.classList.add('is-open'); storyModal.setAttribute('aria-hidden', 'false'); document.body.classList.add('story-lock'); renderStoryChapter(activeStoryChapter); document.getElementById('closeFullStory').focus(); }
+    function closeStory() { storyModal.classList.remove('is-open'); storyModal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('story-lock'); document.getElementById('openFullStory').focus(); }
+    document.getElementById('openFullStory').addEventListener('click', openStory);
+    document.getElementById('closeFullStory').addEventListener('click', closeStory);
+    storyModal.addEventListener('click', event => { if (event.target === storyModal) closeStory(); });
+    document.addEventListener('keydown', event => { if (!storyModal.classList.contains('is-open')) return; if (event.key === 'Escape') closeStory(); if (event.key === 'ArrowRight') renderStoryChapter(activeStoryChapter + 1); if (event.key === 'ArrowLeft') renderStoryChapter(activeStoryChapter - 1); });
+    document.getElementById('storyPrev').addEventListener('click', () => renderStoryChapter(activeStoryChapter - 1));
+    document.getElementById('storyNext').addEventListener('click', () => renderStoryChapter(activeStoryChapter + 1));
+    collectStoryImages();
+    setStoryLanguage('pt');
+    const originalSetLanguage = setLanguage;
+    setLanguage = function (language) { originalSetLanguage(language); setStoryLanguage(language); };
+    setLanguage('pt');
+
+  </script>
+</body>
+
+</html>

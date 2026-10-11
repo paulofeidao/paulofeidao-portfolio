@@ -1,0 +1,20 @@
+# Dependências (nunca vão para o Git)
+node_modules/
+
+# Segredos (nunca vão para o Git)
+.env
+
+# Netlify
+.netlify/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Backups e versões antigas do portfólio
+paulo_feidao_portfolio_11_10_2026.html
+paulo_feidao_portfolio_11_10_2026_com_icones_bilingua.html
+portfolio-paulo-feidao-melhorado.html
+
+# Deno
+deno.lock

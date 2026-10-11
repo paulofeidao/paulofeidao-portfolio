@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — Comentários & Visitantes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0d0d0d;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            margin: 0 0 8px;
+        }
+
+        .sub {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        /* Login */
+        .login-box {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 13px 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 14px;
+        }
+
+        .login-box input:focus {
+            border-color: #f4c51e;
+            box-shadow: 0 0 0 3px rgba(244, 197, 30, 0.12);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            background: #f4c51e;
+            color: #111;
+            border: 0;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Tabs principais */
+        .main-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #222;
+            padding-bottom: 14px;
+        }
+
+        .main-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #2a2a2a;
+            color: #aaa;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .main-tab:hover {
+            color: #fff;
+            border-color: #444;
+        }
+
+        .main-tab.active {
+            background: #f4c51e;
+            color: #111;
+            border-color: #f4c51e;
+        }
+
+        /* Sub-tabs (comentários) */
+        .tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 8px 14px;
+            border: 1px solid #2a2a2a;
+            background: transparent;
+            color: #aaa;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: #fff;
+            border-color: #444;
+        }
+
+        .tab.active {
+            background: #f4c51e;
+            color: #111;
+            border-color: #f4c51e;
+        }
+
+        /* Stats dos visitantes */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .stat {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #777;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: Georgia, serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #f4c51e;
+        }
+
+        /* Tabela de visitantes */
+        .visitors-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .visitors-search {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .visitors-search:focus {
+            border-color: #f4c51e;
+            box-shadow: 0 0 0 3px rgba(244, 197, 30, 0.12);
+        }
+
+        .btn-export {
+            padding: 10px 16px;
+            background: transparent;
+            color: #f4c51e;
+            border: 1px solid #f4c51e;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-export:hover {
+            background: #f4c51e;
+            color: #111;
+        }
+
+        .table-wrap {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 700px;
+        }
+
+        th {
+            text-align: left;
+            padding: 13px 16px;
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #777;
+            font-weight: 800;
+            border-bottom: 1px solid #2a2a2a;
+            background: #131313;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 16px;
+            border-bottom: 1px solid #1d1d1d;
+            color: #ccc;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        tr:hover td {
+            background: #1a1a1a;
+        }
+
+        .visitor-name {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .visitor-reason {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .visitor-date {
+            color: #666;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .visitor-device {
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* Comentários */
+        .comment {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .comment-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .comment-name {
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .comment-date {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .comment-message {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 0 0 15px;
+            white-space: pre-wrap;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid;
+            transition: all 0.2s;
+        }
+
+        .btn-approve {
+            background: #2ecc71;
+            border-color: #2ecc71;
+            color: #fff;
+        }
+
+        .btn-approve:hover {
+            background: #27ae60;
+        }
+
+        .btn-reject {
+            background: transparent;
+            border-color: #e85b4a;
+            color: #e85b4a;
+        }
+
+        .btn-reject:hover {
+            background: #e85b4a;
+            color: #fff;
+        }
+
+        .btn-delete {
+            background: transparent;
+            border-color: #555;
+            color: #888;
+        }
+
+        .btn-delete:hover {
+            background: #555;
+            color: #fff;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: #3a2f0d;
+            color: #f4c51e;
+        }
+
+        .status-approved {
+            background: #133a1f;
+            color: #4ade80;
+        }
+
+        .status-rejected {
+            background: #3a1515;
+            color: #e85b4a;
+        }
+
+        .empty {
+            color: #666;
+            text-align: center;
+            padding: 40px 0;
+            font-style: italic;
+        }
+
+        .msg {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            display: none;
+        }
+
+        .msg.ok {
+            background: #133a1f;
+            color: #4ade80;
+            display: block;
+        }
+
+        .msg.err {
+            background: #3a1515;
+            color: #e85b4a;
+            display: block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .main-tab {
+                padding: 8px 14px;
+                font-size: 11px;
+            }
+
+            th,
+            td {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <!-- Ecrã de login -->
+        <div id="loginScreen">
+            <h1>Admin</h1>
+            <p class="sub">Introduz a password para gerir comentários e visitantes.</p>
+            <div class="login-box">
+                <input type="password" id="adminPassword" placeholder="Password" autocomplete="current-password">
+                <button id="loginBtn">Entrar</button>
+            </div>
+        </div>
+
+        <!-- Painel -->
+        <div id="panelScreen" style="display:none;">
+            <h1>Dashboard</h1>
+            <p class="sub">Comentários e visitantes do portfólio.</p>
+            <div class="msg" id="msg"></div>
+
+            <div class="main-tabs">
+                <button class="main-tab active" data-tab="comments">Comentários</button>
+                <button class="main-tab" data-tab="visitors">Visitantes</button>
+            </div>
+
+            <!-- ABA COMENTÁRIOS -->
+            <div class="tab-content active" id="tab-comments">
+                <div class="tabs">
+                    <button class="tab active" data-status="pending">Pendentes</button>
+                    <button class="tab" data-status="approved">Aprovados</button>
+                    <button class="tab" data-status="rejected">Rejeitados</button>
+                    <button class="tab" data-status="all">Todos</button>
+                </div>
+                <div id="commentsList">
+                    <div class="empty">A carregar...</div>
+                </div>
+            </div>
+
+            <!-- ABA VISITANTES -->
+            <div class="tab-content" id="tab-visitors">
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-label">Total de visitas</div>
+                        <div class="stat-value" id="statTotal">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Hoje</div>
+                        <div class="stat-value" id="statToday">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Últimos 7 dias</div>
+                        <div class="stat-value" id="statWeek">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Nomes únicos</div>
+                        <div class="stat-value" id="statUnique">—</div>
+                    </div>
+                </div>
+
+                <div class="visitors-toolbar">
+                    <input class="visitors-search" type="text" id="visitorsSearch"
+                        placeholder="Pesquisar por nome ou motivo...">
+                    <button class="btn-export" id="exportCsv">Exportar CSV</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Motivo</th>
+                                <th>Data</th>
+                                <th>Dispositivo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="visitorsTable">
+                            <tr>
+                                <td colspan="4" class="empty">A carregar...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var STORAGE = 'pf_admin_token_v1';
+            var currentCommentStatus = 'pending';
+            var allVisitors = [];
+            var filteredVisitors = [];
+
+            var loginScreen = document.getElementById('loginScreen');
+            var panelScreen = document.getElementById('panelScreen');
+            var passwordInput = document.getElementById('adminPassword');
+            var loginBtn = document.getElementById('loginBtn');
+            var commentsList = document.getElementById('commentsList');
+            var visitorsTable = document.getElementById('visitorsTable');
+            var visitorsSearch = document.getElementById('visitorsSearch');
+            var exportBtn = document.getElementById('exportCsv');
+            var msgEl = document.getElementById('msg');
+
+            function getToken() { return sessionStorage.getItem(STORAGE) || ''; }
+            function setToken(t) { sessionStorage.setItem(STORAGE, t); }
+            function clearToken() { sessionStorage.removeItem(STORAGE); }
+
+            function showMsg(text, type) {
+                msgEl.textContent = text;
+                msgEl.className = 'msg ' + type;
+                setTimeout(function () { msgEl.className = 'msg'; }, 3500);
+            }
+
+            function escapeHtml(str) {
+                var div = document.createElement('div');
+                div.textContent = str == null ? '' : str;
+                return div.innerHTML;
+            }
+
+            function formatDate(iso) {
+                var d = new Date(iso);
+                return d.toLocaleString('pt-PT', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+            }
+
+            function detectDevice(userAgent) {
+                if (!userAgent) return '—';
+                var ua = userAgent.toLowerCase();
+                if (/iphone|ipad|ipod/.test(ua)) return 'iOS';
+                if (/android/.test(ua)) return 'Android';
+                if (/windows/.test(ua)) return 'Windows';
+                if (/mac os/.test(ua)) return 'macOS';
+                if (/linux/.test(ua)) return 'Linux';
+                return 'Outro';
+            }
+
+            function detectBrowser(userAgent) {
+                if (!userAgent) return '';
+                var ua = userAgent.toLowerCase();
+                if (/edg\//.test(ua)) return 'Edge';
+                if (/chrome/.test(ua) && !/edg\//.test(ua)) return 'Chrome';
+                if (/firefox/.test(ua)) return 'Firefox';
+                if (/safari/.test(ua) && !/chrome/.test(ua)) return 'Safari';
+                return '';
+            }
+
+            /* =============== COMENTÁRIOS =============== */
+
+            function loadComments() {
+                commentsList.innerHTML = '<div class="empty">A carregar...</div>';
+                fetch('/.netlify/functions/admin-comments?status=' + currentCommentStatus, {
+                    headers: { 'Authorization': 'Bearer ' + getToken() }
+                })
+                    .then(function (r) {
+                        if (r.status === 401) {
+                            clearToken();
+                            showLogin();
+                            throw new Error('Sessão expirada.');
+                        }
+                        return r.json();
+                    })
+                    .then(function (data) {
+                        renderComments(data.comments || []);
+                    })
+                    .catch(function (err) {
+                        commentsList.innerHTML = '<div class="empty">' + escapeHtml(err.message || 'Erro ao carregar.') + '</div>';
+                    });
+            }
+
+            function renderComments(comments) {
+                if (!comments.length) {
+                    commentsList.innerHTML = '<div class="empty">Nenhum comentário nesta categoria.</div>';
+                    return;
+                }
+                commentsList.innerHTML = comments.map(function (c) {
+                    var actions = '';
+                    if (c.status === 'pending') {
+                        actions =
+                            '<button class="btn btn-approve" data-id="' + c.id + '" data-action="approve">Aprovar</button>' +
+                            '<button class="btn btn-reject" data-id="' + c.id + '" data-action="reject">Rejeitar</button>';
+                    } else if (c.status === 'approved') {
+                        actions =
+                            '<button class="btn btn-reject" data-id="' + c.id + '" data-action="reject">Remover do site</button>';
+                    } else if (c.status === 'rejected') {
+                        actions =
+                            '<button class="btn btn-approve" data-id="' + c.id + '" data-action="approve">Aprovar</button>';
+                    }
+                    actions += '<button class="btn btn-delete" data-id="' + c.id + '" data-action="delete">Apagar</button>';
+
+                    return (
+                        '<article class="comment">' +
+                        '<div class="comment-head">' +
+                        '<div>' +
+                        '<div class="comment-name">' + escapeHtml(c.name) + '</div>' +
+                        '<div class="comment-date">' + formatDate(c.created_at) + '</div>' +
+                        '</div>' +
+                        '<span class="status status-' + c.status + '">' + c.status + '</span>' +
+                        '</div>' +
+                        '<p class="comment-message">' + escapeHtml(c.message) + '</p>' +
+                        '<div class="comment-actions">' + actions + '</div>' +
+                        '</article>'
+                    );
+                }).join('');
+            }
+
+            function doCommentAction(id, action) {
+                var labels = { approve: 'Aprovado', reject: 'Rejeitado', delete: 'Apagado' };
+                var confirmMsgs = {
+                    approve: 'Aprovar este comentário?',
+                    reject: 'Rejeitar este comentário?',
+                    delete: 'Apagar permanentemente? Não pode ser desfeito.'
+                };
+                if (!confirm(confirmMsgs[action])) return;
+
+                fetch('/.netlify/functions/admin-action', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + getToken()
+                    },
+                    body: JSON.stringify({ id: id, action: action })
+                })
+                    .then(function (r) {
+                        if (r.status === 401) {
+                            clearToken();
+                            showLogin();
+                            throw new Error('Sessão expirada.');
+                        }
+                        return r.json();
+                    })
+                    .then(function (data) {
+                        if (data.ok) {
+                            showMsg(labels[action] + ' com sucesso.', 'ok');
+                            loadComments();
+                        } else {
+                            throw new Error(data.message || 'Erro.');
+                        }
+                    })
+                    .catch(function (err) {
+                        showMsg(err.message || 'Erro.', 'err');
+                    });
+            }
+
+            /* =============== VISITANTES =============== */
+
+            function loadVisitors() {
+                visitorsTable.innerHTML = '<tr><td colspan="4" class="empty">A carregar...</td></tr>';
+                fetch('/.netlify/functions/admin-visitors?limit=500', {
+                    headers: { 'Authorization': 'Bearer ' + getToken() }
+                })
+                    .then(function (r) {
+                        if (r.status === 401) {
+                            clearToken();
+                            showLogin();
+                            throw new Error('Sessão expirada.');
+                        }
+                        return r.json();
+                    })
+                    .then(function (data) {
+                        allVisitors = data.visitors || [];
+                        filteredVisitors = allVisitors.slice();
+                        updateVisitorStats();
+                        renderVisitors();
+                    })
+                    .catch(function (err) {
+                        visitorsTable.innerHTML = '<tr><td colspan="4" class="empty">' + escapeHtml(err.message || 'Erro.') + '</td></tr>';
+                    });
+            }
+
+            function updateVisitorStats() {
+                var total = allVisitors.length;
+
+                var now = new Date();
+                var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                var weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+                var today = 0, week = 0;
+                var uniqueNames = {};
+
+                allVisitors.forEach(function (v) {
+                    var d = new Date(v.created_at);
+                    if (d >= todayStart) today++;
+                    if (d >= weekAgo) week++;
+                    if (v.name) uniqueNames[v.name.trim().toLowerCase()] = true;
+                });
+
+                document.getElementById('statTotal').textContent = total;
+                document.getElementById('statToday').textContent = today;
+                document.getElementById('statWeek').textContent = week;
+                document.getElementById('statUnique').textContent = Object.keys(uniqueNames).length;
+            }
+
+            function renderVisitors() {
+                if (!filteredVisitors.length) {
+                    visitorsTable.innerHTML = '<tr><td colspan="4" class="empty">Nenhum visitante encontrado.</td></tr>';
+                    return;
+                }
+
+                visitorsTable.innerHTML = filteredVisitors.map(function (v) {
+                    var device = detectDevice(v.user_agent);
+                    var browser = detectBrowser(v.user_agent);
+                    var deviceLabel = device + (browser ? ' · ' + browser : '');
+
+                    return (
+                        '<tr>' +
+                        '<td class="visitor-name">' + escapeHtml(v.name) + '</td>' +
+                        '<td class="visitor-reason">' + (v.reason ? escapeHtml(v.reason) : '—') + '</td>' +
+                        '<td class="visitor-date">' + formatDate(v.created_at) + '</td>' +
+                        '<td class="visitor-device">' + escapeHtml(deviceLabel) + '</td>' +
+                        '</tr>'
+                    );
+                }).join('');
+            }
+
+            function filterVisitors(query) {
+                var q = query.trim().toLowerCase();
+                if (!q) {
+                    filteredVisitors = allVisitors.slice();
+                } else {
+                    filteredVisitors = allVisitors.filter(function (v) {
+                        return (v.name || '').toLowerCase().indexOf(q) !== -1
+                            || (v.reason || '').toLowerCase().indexOf(q) !== -1;
+                    });
+                }
+                renderVisitors();
+            }
+
+            function exportCsv() {
+                if (!filteredVisitors.length) {
+                    showMsg('Nada para exportar.', 'err');
+                    return;
+                }
+
+                var rows = [['Nome', 'Motivo', 'Data', 'Dispositivo', 'Página', 'Referrer']];
+                filteredVisitors.forEach(function (v) {
+                    rows.push([
+                        v.name || '',
+                        v.reason || '',
+                        formatDate(v.created_at),
+                        detectDevice(v.user_agent) + (detectBrowser(v.user_agent) ? ' · ' + detectBrowser(v.user_agent) : ''),
+                        v.page || '',
+                        v.referrer || ''
+                    ]);
+                });
+
+                var csv = rows.map(function (row) {
+                    return row.map(function (cell) {
+                        var s = String(cell).replace(/"/g, '""');
+                        return '"' + s + '"';
+                    }).join(',');
+                }).join('\n');
+
+                var blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+                var url = URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.href = url;
+                link.download = 'visitantes-' + new Date().toISOString().slice(0, 10) + '.csv';
+                link.click();
+                URL.revokeObjectURL(url);
+            }
+
+            /* =============== TABS =============== */
+
+            document.querySelectorAll('.main-tab').forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    document.querySelectorAll('.main-tab').forEach(function (t) { t.classList.remove('active'); });
+                    document.querySelectorAll('.tab-content').forEach(function (c) { c.classList.remove('active'); });
+                    tab.classList.add('active');
+                    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+
+                    if (tab.dataset.tab === 'visitors' && allVisitors.length === 0) {
+                        loadVisitors();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.tab').forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+                    tab.classList.add('active');
+                    currentCommentStatus = tab.dataset.status;
+                    loadComments();
+                });
+            });
+
+            commentsList.addEventListener('click', function (e) {
+                var btn = e.target.closest('.btn');
+                if (!btn) return;
+                doCommentAction(btn.dataset.id, btn.dataset.action);
+            });
+
+            visitorsSearch.addEventListener('input', function (e) {
+                filterVisitors(e.target.value);
+            });
+
+            exportBtn.addEventListener('click', exportCsv);
+
+            /* =============== AUTENTICAÇÃO =============== */
+
+            function showPanel() {
+                loginScreen.style.display = 'none';
+                panelScreen.style.display = 'block';
+                loadComments();
+            }
+
+            function showLogin() {
+                loginScreen.style.display = 'block';
+                panelScreen.style.display = 'none';
+                passwordInput.focus();
+            }
+
+            loginBtn.addEventListener('click', function () {
+                var pwd = passwordInput.value;
+                if (!pwd) return;
+
+                fetch('/.netlify/functions/admin-comments?status=pending', {
+                    headers: { 'Authorization': 'Bearer ' + pwd }
+                })
+                    .then(function (r) {
+                        if (r.status === 401) throw new Error('Password incorreta.');
+                        return r.json();
+                    })
+                    .then(function () {
+                        setToken(pwd);
+                        passwordInput.value = '';
+                        showPanel();
+                    })
+                    .catch(function (err) {
+                        alert(err.message || 'Erro ao validar.');
+                    });
+            });
+
+            passwordInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') loginBtn.click();
+            });
+
+            if (getToken()) {
+                showPanel();
+            } else {
+                showLogin();
+            }
+        })();
+    </script>
+</body>
+
+</html>
